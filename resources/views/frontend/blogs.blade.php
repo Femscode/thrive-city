@@ -22,7 +22,7 @@
                         <article class="blog-card">
                             <a href="{{ route('blogs.details', $blog->slug) }}" class="blog-image-link" aria-label="View blog: {{ $blog->title }}">
                                 @if($blog->image_path)
-                                    <img src="{{ url($blog->image_path) }}" alt="{{ $blog->title }}" class="blog-image">
+                                    <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $blog->image_path }}" alt="{{ $blog->title }}" class="blog-image">
                                 @else
                                     <div class="blog-image-empty">ThriveCity Blog</div>
                                 @endif

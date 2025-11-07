@@ -20,7 +20,8 @@
     <div class="blog-detail-container">
         @if($blog->image_path)
             <div class="blog-detail-image-wrap">
-                <img src="{{ url($blog->image_path) }}" alt="{{ $blog->title }}" class="blog-detail-image">
+
+                <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $blog->image_path }}" alt="{{ $blog->title }}" class="blog-detail-image">
             </div>
         @endif
         <article class="blog-detail-content">

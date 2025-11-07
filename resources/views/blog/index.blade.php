@@ -35,7 +35,8 @@
                                 <tr>
                                     <td class="px-4 py-3">
                                         @if($blog->image_path)
-                                            <img src="{{ asset($blog->image_path) }}" alt="{{ $blog->title }}" class="w-16 h-16 object-cover rounded blog-cover">
+                                              <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $blog->image_path }}" alt="{{ $blog->title }}" class="w-16 h-16 object-cover rounded blog-cover">
+                              
                                         @else
                                             <div class="w-16 h-16 bg-gray-100 rounded flex items-center justify-center text-gray-400 text-xs">No Image</div>
                                         @endif

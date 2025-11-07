@@ -35,7 +35,8 @@
                         <label class="block text-sm font-medium text-gray-700">Cover Image</label>
                         <div class="mt-2 flex items-center space-x-4">
                             @if($blog->image_path)
-                                <img src="{{ asset($blog->image_path) }}" alt="{{ $blog->title }}" class="w-24 h-24 object-cover rounded">
+                            
+                                <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $blog->image_path }}" alt="{{ $blog->title }}" class="w-24 h-24 object-cover rounded">
                             @endif
                             <input type="file" name="image" accept="image/*" class="block w-full text-sm text-gray-700">
                         </div>

@@ -64,11 +64,11 @@
                         </button>
                     </div>
                     <div class="mobile-menu-links">
-                        <a href="#" class="mobile-nav-link active">Home</a>
-                        <a href="#" class="mobile-nav-link">Services</a>
-                        <a href="#" class="mobile-nav-link">Portfolio</a>
-                        <a href="#" class="mobile-nav-link">About Us</a>
-                        <a href="#" class="mobile-contact-btn">Contact Us</a>
+                        <a href="/" class="mobile-nav-link active">Home</a>
+                        <a href="/our-blogs" class="mobile-nav-link">Our Blogs</a>
+                        <a href="/our-portfolio" class="mobile-nav-link">Our Portfolio</a>
+                        <a href="/about-us" class="mobile-nav-link">About Us</a>
+                        <a href="/contact-us" class="mobile-contact-btn">Contact Us</a>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,68 @@
+:root {
+    --brand-primary: #390466;
+    --brand-secondary: #faf7f4;
+}
+
+.brand-bg-primary { background-color: var(--brand-primary); }
+.brand-text-primary { color: var(--brand-primary); }
+.brand-bg-secondary { background-color: var(--brand-secondary); }
+.brand-border-primary { border-color: var(--brand-primary); }
+
+/* Cards / Panels */
+.stats-card {
+    background: linear-gradient(135deg, var(--brand-secondary) 0%, #ffffff 100%);
+    border-left: 4px solid var(--brand-primary);
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.status-pending { background-color: #fef3c7; color: #92400e; }
+.status-paid { background-color: #dbeafe; color: #1e40af; }
+.status-shipped { background-color: #fde68a; color: #92400e; }
+.status-delivered { background-color: #d1fae5; color: #065f46; }
+
+/* Buttons */
+.btn-brand {
+    background-color: var(--brand-primary);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-brand:hover { background-color: #2d0350; transform: translateY(-1px); }
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--brand-primary);
+    border: 2px solid var(--brand-primary);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-outline:hover { background-color: var(--brand-primary); color: white; }
+
+/* DataTables tweaks */
+.dataTables_wrapper .dataTables_length select,
+.dataTables_wrapper .dataTables_filter input {
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 8px 12px;
+}
+.dataTables_wrapper .dataTables_length select:focus,
+.dataTables_wrapper .dataTables_filter input:focus {
+    border-color: var(--brand-primary);
+    outline: none;
+}
+table.dataTable thead th { background-color: var(--brand-primary); color: white; border-bottom: none; }
+table.dataTable tbody tr:hover { background-color: var(--brand-secondary); }

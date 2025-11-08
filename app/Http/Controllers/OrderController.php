@@ -18,7 +18,7 @@ class OrderController extends Controller
         $totalOrders = OrderRequest::count();
         $blogs = Blog::all();
         // Get recent orders with pagination
-        $orders = OrderRequest::orderBy('created_at', 'desc')->paginate(10);
+        $orders = OrderRequest::latest()->paginate(10);
 
         return view('dashboard', compact(
             'totalOrders',

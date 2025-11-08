@@ -146,7 +146,7 @@
                                 @endphp
                                 
                                 @if(in_array(strtolower($fileExtension), $imageExtensions))
-                                    <img src="{{ Storage::url($order->design_file) }}" 
+                                    <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $order->design_file }}" 
                                          alt="Design Preview" 
                                          class="od-design-preview mx-auto mb-4">
                                 @else
@@ -159,7 +159,7 @@
                                     </div>
                                 @endif
                                 
-                                <a href="{{ Storage::url($order->design_file) }}" 
+                                <a href="https://thrivecitystudio.ca/thrivecity-files/public/{{ $order->design_file }}" 
                                    target="_blank" 
                                    class="od-btn-outline w-full text-center block">
                                     <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

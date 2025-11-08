@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\OrderRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class FrontendController extends Controller
 {
@@ -61,7 +62,13 @@ class FrontendController extends Controller
         if ($request->hasFile('design_file')) {
             $file = $request->file('design_file');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $designFilePath = $file->storeAs('designs', $filename, 'public');
+            $destinationPath = public_path('designs');
+            if (!File::isDirectory($destinationPath)) {
+                File::makeDirectory($destinationPath, 0755, true);
+            }
+            $file->move($destinationPath, $filename);
+            // Store relative path to the public file for use with asset()
+            $designFilePath = 'designs/' . $filename;
         }
 
         // Create the order request

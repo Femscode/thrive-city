@@ -280,7 +280,7 @@
                             <p>or click to browse files</p>
                             <span class="file-types">Supported: PNG, JPG, SVG, PDF (Max 10MB)</span>
                         </div>
-                        <input type="file" id="designFile" name="design_file" accept=".png,.jpg,.jpeg,.svg,.pdf" multiple>
+                        <input type="file" id="designFile" name="design_file" accept=".png,.jpg,.jpeg,.svg,.pdf">
                     </div>
                     <div class="uploaded-files" id="uploadedFiles"></div>
                 </div>
@@ -387,7 +387,16 @@
         uploadArea.addEventListener('drop', (e) => {
             e.preventDefault();
             uploadArea.classList.remove('drag-over');
-            handleFiles(e.dataTransfer.files);
+            const droppedFiles = e.dataTransfer.files;
+            handleFiles(droppedFiles);
+            // Ensure dropped files are actually submitted with the form
+            // by assigning them to the file input using DataTransfer
+            if (droppedFiles && droppedFiles.length > 0) {
+                const dt = new DataTransfer();
+                // Only one file is expected by backend; take the first
+                dt.items.add(droppedFiles[0]);
+                fileInput.files = dt.files;
+            }
         });
 
         fileInput.addEventListener('change', (e) => {
@@ -396,17 +405,20 @@
 
         function handleFiles(files) {
             uploadedFiles.innerHTML = '';
-            Array.from(files).forEach(file => {
-                const fileItem = document.createElement('div');
-                fileItem.className = 'file-item';
-                fileItem.innerHTML = `
-                    <i class="fas fa-file"></i>
-                    <span>${file.name}</span>
-                    <span class="file-size">${(file.size / 1024 / 1024).toFixed(2)} MB</span>
-                `;
-                uploadedFiles.appendChild(fileItem);
-            });
+            if (!files || files.length === 0) return;
+            const file = files[0];
+            const fileItem = document.createElement('div');
+            fileItem.className = 'file-item';
+            fileItem.innerHTML = `
+                <i class="fas fa-file"></i>
+                <span>${file.name}</span>
+                <span class="file-size">${(file.size / 1024 / 1024).toFixed(2)} MB</span>
+            `;
+            uploadedFiles.appendChild(fileItem);
         }
+
+        // Prevent click bubbling to avoid accidental re-opening after selection
+        fileInput.addEventListener('click', (e) => e.stopPropagation());
 
         // Order summary update
         function updateOrderSummary() {

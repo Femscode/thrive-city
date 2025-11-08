@@ -109,8 +109,11 @@
         $(document).ready(function() {
             // Initialize DataTable
             ordersTable = $('#ordersTable').DataTable({
+                
                 processing: true,
                 serverSide: true,
+                // Default to latest orders first (created_at DESC)
+                order: [[5, 'desc']],
                 scrollX: true,
                 ajax: {
                     url: '{{ route("orders.data") }}',

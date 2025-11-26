@@ -17,6 +17,12 @@
   }
 }
 
+@media (min-width: 1024px) { /* desktop and up */
+  .dash-stats-row {
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* four columns from lg */
+  }
+}
+
 .dash-card {
   width: 100%;
   background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
@@ -84,6 +90,7 @@
 .dash-ml-4 { margin-left: 1rem; }
 .dash-label { font-size: 0.75rem; font-weight: 600; color: #6b7280; letter-spacing: .02em; }
 .dash-value { font-size: 2rem; line-height: 2.25rem; font-weight: 700; }
+.dash-card .dash-value { color: #0f172a; }
 .dash-value-primary { color: var(--brand-primary, #390466); }
 .dash-value-yellow { color: #ca8a04; }
 .dash-value-blue { color: #2563eb; }
@@ -92,3 +99,48 @@
 
 /* Ensure dashboard styles win over any generic utility conflicts */
 .dash-stats-row *, .dash-card * { box-sizing: border-box; }
+
+/* Quick Actions modern layout */
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* single column on all breakpoints */
+  gap: 1.25rem;
+  align-items: stretch;
+}
+@media (min-width: 768px) {
+  .quick-actions-grid { grid-template-columns: 1fr; }
+}
+@media (min-width: 1024px) {
+  .quick-actions-grid { grid-template-columns: 1fr; }
+}
+
+.quick-action {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  min-height: 72px;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+  box-shadow: 0 6px 16px rgba(16, 24, 40, 0.06);
+  color: #0f172a;
+  text-decoration: none;
+  transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
+}
+.quick-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 22px rgba(16, 24, 40, 0.10);
+  background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+}
+.quick-action-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef2ff;
+  color: #4f46e5;
+}
+.quick-action-icon svg { width: 18px; height: 18px; }

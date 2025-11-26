@@ -23,6 +23,7 @@ class OrderRequest extends Model
         'customer_phone',
         'special_instructions',
         'status',
+        'customer_address',
     ];
 
     /**
@@ -42,5 +43,13 @@ class OrderRequest extends Model
     public function getPlacementsStringAttribute()
     {
         return implode(', ', $this->placements ?? []);
+    }
+
+    /**
+     * Relationship: an order has many items
+     */
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class, 'order_request_id');
     }
 }

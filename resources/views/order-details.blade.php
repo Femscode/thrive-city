@@ -29,16 +29,7 @@
                     <span class="od-status-badge od-status-{{ $order->status }}">{{ $order->status }}</span>
                     <span class="text-gray-600">Created: {{ $order->created_at->format('M d, Y \a\t g:i A') }}</span>
                 </div>
-                <div class="flex space-x-3">
-                    <select id="statusSelect" class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                        <option value="">Change Status</option>
-                        <option value="pending" {{ $order->status === 'pending' ? 'selected' : '' }}>Pending</option>
-                        <option value="paid" {{ $order->status === 'paid' ? 'selected' : '' }}>Paid</option>
-                        <option value="shipped" {{ $order->status === 'shipped' ? 'selected' : '' }}>Shipped</option>
-                        <option value="delivered" {{ $order->status === 'delivered' ? 'selected' : '' }}>Delivered</option>
-                    </select>
-                    <button onclick="updateOrderStatus()" class="od-btn-brand">Update Status</button>
-                </div>
+                
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -64,7 +55,71 @@
                                 <div class="od-info-label">Phone Number</div>
                                 <div class="od-info-value">{{ $order->customer_phone ?: 'Not provided' }}</div>
                             </div>
+                            <div class="od-info-item">
+                                <div class="od-info-label">Address</div>
+                                <div class="od-info-value">{{ $order->customer_address ?: 'Not provided' }}</div>
+                            </div>
                         </div>
+                    </div>
+
+                    <!-- Items Ordered -->
+                    <div class="od-detail-card p-6 mb-6">
+                        <h3 class="text-lg font-semibold brand-text-primary mb-4 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"></path>
+                            </svg>
+                            Items Ordered
+                        </h3>
+                        @if($order->items && $order->items->count() > 0)
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full table-auto">
+                                    <thead>
+                                        <tr>
+                                            <th class="px-4 py-2 text-left">Product</th>
+                                            <th class="px-4 py-2 text-left">Type</th>
+                                            <th class="px-4 py-2 text-left">Size</th>
+                                            <th class="px-4 py-2 text-left">Color</th>
+                                            <th class="px-4 py-2 text-left">Qty</th>
+                                            <th class="px-4 py-2 text-left">Price</th>
+                                            <th class="px-4 py-2 text-left">Design</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($order->items as $item)
+                                            <tr class="border-t">
+                                                <td class="px-4 py-2">{{ $item->product_name }}</td>
+                                                <td class="px-4 py-2">{{ ucfirst($item->product_type) }}</td>
+                                                <td class="px-4 py-2">{{ $item->size ? strtoupper($item->size) : '-' }}</td>
+                                                <td class="px-4 py-2">{{ $item->color ? ucfirst($item->color) : '-' }}</td>
+                                                <td class="px-4 py-2">{{ $item->qty }}</td>
+                                                <td class="px-4 py-2">$ {{ number_format($item->price, 2) }}</td>
+                                                <td class="px-4 py-2">
+                                                    @if($item->design_file)
+                                                        <a href="{{ asset($item->design_file) }}" download class="text-purple-700 hover:underline">Download</a>
+                                                    @else
+                                                        <span class="text-gray-500">None</span>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            @if($item->placements && is_array($item->placements) && count($item->placements) > 0)
+                                                <tr>
+                                                    <td colspan="7" class="px-4 py-2">
+                                                        <div class="od-info-label">Placements</div>
+                                                        <div class="mt-2">
+                                                            @foreach($item->placements as $placement)
+                                                                <span class="od-placement-tag">{{ ucfirst($placement) }}</span>
+                                                            @endforeach
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @else
+                            <p class="text-gray-600">No items found for this order.</p>
+                        @endif
                     </div>
 
                     <!-- Product Information -->
@@ -159,8 +214,8 @@
                                     </div>
                                 @endif
                                 
-                                <a href="https://thrivecitystudio.ca/thrivecity-files/public/{{ $order->design_file }}" 
-                                   target="_blank" 
+                                <a href="{{ asset($order->design_file) }}" 
+                                   download 
                                    class="od-btn-outline w-full text-center block">
                                     <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -182,85 +237,5 @@
         </div>
     </div>
 
-    @push('scripts')
-    <script>
-        function updateOrderStatus() {
-            const statusSelect = document.getElementById('statusSelect');
-            const newStatus = statusSelect.value;
-            
-            if (!newStatus) {
-                window.Swal && Swal.fire({
-                    title: 'No Status Selected',
-                    text: 'Please select a status to update.',
-                    icon: 'warning',
-                    confirmButtonColor: '#390466'
-                });
-                return;
-            }
-
-            window.Swal && Swal.fire({
-                title: 'Update Order Status?',
-                text: `Are you sure you want to change the status to "${newStatus}"?`,
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#390466',
-                cancelButtonColor: '#6b7280',
-                confirmButtonText: 'Yes, update it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Show loading
-                    window.Swal && Swal.fire({
-                        title: 'Updating...',
-                        text: 'Please wait while we update the order status.',
-                        allowOutsideClick: false,
-                        allowEscapeKey: false,
-                        showConfirmButton: false,
-                        didOpen: () => {
-                            Swal.showLoading();
-                        }
-                    });
-
-                    fetch(`/orders/{{ $order->id }}/status`, {
-                        method: 'PATCH',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                        },
-                        body: JSON.stringify({ status: newStatus })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            window.Swal && Swal.fire({
-                                title: 'Updated!',
-                                text: data.message,
-                                icon: 'success',
-                                confirmButtonColor: '#390466'
-                            }).then(() => {
-                                // Reload the page to show updated status
-                                window.location.reload();
-                            });
-                        } else {
-                            window.Swal && Swal.fire({
-                                title: 'Error!',
-                                text: 'Failed to update order status.',
-                                icon: 'error',
-                                confirmButtonColor: '#390466'
-                            });
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        window.Swal && Swal.fire({
-                            title: 'Error!',
-                            text: 'An error occurred while updating the status.',
-                            icon: 'error',
-                            confirmButtonColor: '#390466'
-                        });
-                    });
-                }
-            });
-        }
-    </script>
-    @endpush
+    
 @endsection

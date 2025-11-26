@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ThriveCity Studio - Thoughtful Design For Your Brand</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,6 +35,8 @@
                     <a href="/about-us" class="nav-link">About us</a>
                     <a href="/our-portfolio" class="nav-link">Our Portfolio</a>
                     <a href="/our-blogs" class="nav-link">Our Blogs</a>
+                    <a href="/marketplace" class="nav-link">Marketplace</a>
+                    <a href="/cart" class="nav-link">Cart</a>
                     <a href="/contact-us" class="nav-link">Contact Us</a>
                 </div>
 
@@ -68,6 +71,9 @@
                         <a href="/our-blogs" class="mobile-nav-link">Our Blogs</a>
                         <a href="/our-portfolio" class="mobile-nav-link">Our Portfolio</a>
                         <a href="/about-us" class="mobile-nav-link">About Us</a>
+                        <a href="/marketplace" class="mobile-nav-link">Marketplace</a>
+                        <a href="/cart" class="mobile-nav-link">Cart</a>
+                        <a href="/place-order" class="mobile-nav-link">Checkout</a>
                         <a href="/contact-us" class="mobile-contact-btn">Contact Us</a>
                     </div>
                 </div>

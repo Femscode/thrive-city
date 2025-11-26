@@ -13,6 +13,8 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
+     <link rel="icon" href="{{ url('assets/images/fav.png') }}" type="image/x-icon">
+    
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
     <script src="{{ url('assets/js/app.js') }}"></script>
 

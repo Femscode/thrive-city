@@ -1,9 +1,8 @@
 @extends('layouts.admin')
 
 @section('header')
-    <div class="flex items-center justify-between">
+    <div class="flex items-center">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">Edit Blog</h2>
-        <a href="{{ route('blog.index') }}" class="px-4 py-2 border rounded-md text-gray-700">Back to List</a>
     </div>
 @endsection
 
@@ -16,6 +15,7 @@
 @section('content')
     <div class="py-8">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+            <div class="mb-4"><a href="{{ route('blog.index') }}" class="btn-outline">Back</a></div>
             @if(session('status'))
                 <div class="mb-4 p-4 bg-green-50 text-green-700 rounded">{{ session('status') }}</div>
             @endif

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Product;
+use App\Models\Category;
 use App\Models\OrderRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -14,17 +16,28 @@ class OrderController extends Controller
      */
     public function index()
     {
-        // Get order statistics
+        // Dashboard overview metrics
         $totalOrders = OrderRequest::count();
-        $blogs = Blog::all();
-        // Get recent orders with pagination
-        $orders = OrderRequest::latest()->get();
+        $totalProducts = Product::count();
+        $totalCategories = Category::count();
+        $totalBlogs = Blog::count();
+        $recentBlogs = Blog::latest()->take(5)->get();
 
         return view('dashboard', compact(
             'totalOrders',
-            'blogs',
-            'orders'
+            'totalProducts',
+            'totalCategories',
+            'totalBlogs',
+            'recentBlogs'
         ));
+    }
+
+    /**
+     * Orders list page (moved from dashboard)
+     */
+    public function list()
+    {
+        return view('admin.orders.index');
     }
 
     /**
@@ -32,28 +45,8 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $order = OrderRequest::findOrFail($id);
+        $order = OrderRequest::with('items')->findOrFail($id);
         return view('order-details', compact('order'));
-    }
-
-    /**
-     * Update the order status
-     */
-    public function updateStatus(Request $request, $id)
-    {
-        $request->validate([
-            'status' => 'required|in:pending,paid,shipped,delivered'
-        ]);
-
-        $order = OrderRequest::findOrFail($id);
-        $order->status = $request->status;
-        $order->save();
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Order status updated successfully!',
-            'new_status' => $order->status
-        ]);
     }
 
     /**
@@ -69,7 +62,6 @@ class OrderController extends Controller
             $query->where(function ($q) use ($searchValue) {
                 $q->where('customer_name', 'like', "%{$searchValue}%")
                     ->orWhere('customer_email', 'like', "%{$searchValue}%")
-                    ->orWhere('product_type', 'like', "%{$searchValue}%")
                     ->orWhere('status', 'like', "%{$searchValue}%");
             });
         }
@@ -83,7 +75,7 @@ class OrderController extends Controller
             $orderColumn = $request->order[0]['column'];
             $orderDirection = $request->order[0]['dir'];
 
-            $columns = ['id', 'customer_name', 'customer_email', 'product_type', 'status', 'created_at'];
+            $columns = ['id', 'customer_name', 'customer_email', 'items_count', 'status', 'created_at'];
             if (isset($columns[$orderColumn])) {
                 $query->orderBy($columns[$orderColumn], $orderDirection);
             }
@@ -94,7 +86,7 @@ class OrderController extends Controller
         // Pagination
         $start = $request->start ?? 0;
         $length = $request->length ?? 10;
-        $orders = $query->skip($start)->take($length)->get();
+        $orders = $query->skip($start)->take($length)->withCount('items')->get();
 
         // Format data for DataTable
         $data = $orders->map(function ($order) {
@@ -102,7 +94,7 @@ class OrderController extends Controller
                 'id' => $order->id,
                 'customer_name' => $order->customer_name,
                 'customer_email' => $order->customer_email,
-                'product_type' => ucfirst(str_replace('_', ' ', $order->product_type)),
+                'items_count' => (int) ($order->items_count ?? 0),
                 'status' => $order->status,
                 'created_at' => $order->created_at->format('M d, Y H:i'),
                 'actions' => $order->id // Will be processed in frontend

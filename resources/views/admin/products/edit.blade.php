@@ -1,0 +1,82 @@
+@extends('layouts.admin')
+
+@section('header')
+    <div class="flex items-center w-full">
+        <h2 class="font-semibold text-lg text-slate-800">Edit Product</h2>
+    </div>
+@endsection
+
+@section('content')
+    <div class="bg-white shadow rounded">
+        <div class="p-6">
+            <div class="mb-4"><a href="{{ route('products.index') }}" class="btn-outline">Back</a></div>
+            <form action="{{ route('products.update', $product) }}" method="POST" enctype="multipart/form-data" class="space-y-4">
+                @csrf
+                @method('PUT')
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700">Name</label>
+                        <input type="text" name="name" value="{{ old('name', $product->name) }}" class="mt-1 w-full border border-slate-300 rounded px-3 py-2" required>
+                        @error('name')<p class="text-red-600 text-sm">{{ $message }}</p>@enderror
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700">Size (optional)</label>
+                        <input type="text" name="size" value="{{ old('size', $product->size) }}" placeholder="e.g., S, M, L" class="mt-1 w-full border border-slate-300 rounded px-3 py-2">
+                        @error('size')<p class="text-red-600 text-sm">{{ $message }}</p>@enderror
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700">Category</label>
+                        <select name="category_id" class="mt-1 w-full border border-slate-300 rounded px-3 py-2" required>
+                            @foreach($categories as $cat)
+                                <option value="{{ $cat->id }}" @selected(old('category_id', $product->category_id) == $cat->id)>{{ $cat->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('category_id')<p class="text-red-600 text-sm">{{ $message }}</p>@enderror
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700">Price (USD)</label>
+                        <input type="number" step="0.01" name="price" value="{{ old('price', $product->price) }}" class="mt-1 w-full border border-slate-300 rounded px-3 py-2" required>
+                        @error('price')<p class="text-red-600 text-sm">{{ $message }}</p>@enderror
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700">Quantity</label>
+                        <input type="number" name="quantity" value="{{ old('quantity', $product->quantity) }}" class="mt-1 w-full border border-slate-300 rounded px-3 py-2" required>
+                        @error('quantity')<p class="text-red-600 text-sm">{{ $message }}</p>@enderror
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700">Image</label>
+                        <input type="file" name="image" accept="image/*" class="mt-1">
+                        @error('image')<p class="text-red-600 text-sm">{{ $message }}</p>@enderror
+                    </div>
+                    <div>
+                        @if($product->image)
+                            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="h-24 w-24 object-cover rounded">
+                        @endif
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700">Description</label>
+                    <textarea name="description" rows="4" class="mt-1 w-full border border-slate-300 rounded px-3 py-2">{{ old('description', $product->description) }}</textarea>
+                    @error('description')<p class="text-red-600 text-sm">{{ $message }}</p>@enderror
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="checkbox" name="is_active" value="1" class="rounded" @checked(old('is_active', $product->is_active))>
+                    <span>Active</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="checkbox" name="customizable" value="1" class="rounded" @checked(old('customizable', $product->customizable))>
+                    <span>Customizable<small style="color:red"> If checked, users can select color and design placement</small></span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="checkbox" name="upload_design" value="1" class="rounded" @checked(old('upload_design', $product->upload_design))>
+                    <span>Upload Design<small style="color:red"> If checked, users can upload design</small></span>
+                </div>
+                <div>
+                    <button type="submit" class="btn-gradient">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection

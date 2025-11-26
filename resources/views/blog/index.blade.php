@@ -1,9 +1,8 @@
 @extends('layouts.admin')
 
 @section('header')
-    <div class="flex items-center justify-between">
+    <div class="flex items-center">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">Blog Management</h2>
-        <a href="{{ route('blog.create') }}" class="blog-create-btn px-4 py-2">Create Blog</a>
     </div>
 @endsection
 
@@ -16,6 +15,10 @@
 @section('content')
     <div class="py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-4">
+                <a href="{{ route('dashboard') }}" class="btn-outline">Back</a>
+                <a href="{{ route('blog.create') }}" class="btn-gradient">Create Blog</a>
+            </div>
             <div class="bg-white shadow rounded-lg mt-6 blog-card">
                 <div class="p-6">
                    

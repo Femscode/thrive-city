@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\OrderRequest;
+use App\Models\Delivery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -37,59 +38,64 @@ class FrontendController extends Controller
     }
     
     public function placeOrder() {
-        return view('frontend.place-order');
+        $deliveryPrice = optional(Delivery::first())->price ?? 0;
+        return view('frontend.place-order', compact('deliveryPrice'));
+    }
+
+    public function marketplace() {
+        $products = \App\Models\Product::where('is_active', true)->orderBy('created_at', 'desc')->paginate(12);
+        $cart = session('cart', []);
+        $cartMap = [];
+        foreach ($cart as $item) {
+            $cartMap[$item['id']] = $item['qty'];
+        }
+        return view('frontend.marketplace', compact('products', 'cartMap'));
     }
 
     public function submitOrder(Request $request) {
-        // Validate the request
-        // dd($request->all());exit;
+        // Validate customer info only
         $validated = $request->validate([
-            'product_type' => 'required|string|in:tshirt,sweatshirt,hoodie,founders_bundle',
-            'tshirt_type' => 'nullable',
-            'size' => 'required|string|in:S,M,L,XL,2XL,3XL',
-            'color' => 'required|string',
-            'placements' => 'required|array|min:1',
-            'placements.*' => 'string',
-            'design_file' => 'nullable|file|mimes:jpg,jpeg,png,pdf,ai,psd|max:10240', // 10MB max
             'customer_name' => 'required|string|max:255',
             'customer_email' => 'required|email|max:255',
             'customer_phone' => 'nullable|string|max:20',
             'special_instructions' => 'nullable|string|max:1000',
         ]);
 
-        // Handle file upload if present
-        $designFilePath = null;
-        if ($request->hasFile('design_file')) {
-            $file = $request->file('design_file');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $destinationPath = public_path('designs');
-            if (!File::isDirectory($destinationPath)) {
-                File::makeDirectory($destinationPath, 0755, true);
-            }
-            $file->move($destinationPath, $filename);
-            // Store relative path to the public file for use with asset()
-            $designFilePath = 'designs/' . $filename;
+        // Retrieve cart from session
+        $cart = $request->session()->get('cart', []);
+        if (empty($cart)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Your cart is empty. Please add items before checkout.'
+            ], 422);
         }
 
-        // Create the order request
-        $orderRequest = OrderRequest::create([
-            'product_type' => $validated['product_type'],
-            'tshirt_type' => $validated['tshirt_type'] ?? null,
-            'size' => $validated['size'],
-            'color' => $validated['color'],
-            'placements' => $validated['placements'],
-            'design_file' => $designFilePath,
-            'customer_name' => $validated['customer_name'],
-            'customer_email' => $validated['customer_email'],
-            'customer_phone' => $validated['customer_phone'],
-            'special_instructions' => $validated['special_instructions'],
-            'status' => 'pending',
-        ]);
+        // Create an order request per cart item
+        $orderIds = [];
+        foreach ($cart as $item) {
+            $order = OrderRequest::create([
+                'product_type' => $item['product_type'] ?? 'general',
+                'tshirt_type' => null,
+                'size' => $item['size'] ?? null,
+                'color' => $item['color'] ?? null,
+                'placements' => $item['placements'] ?? null,
+                'design_file' => $item['design_file'] ?? null,
+                'customer_name' => $validated['customer_name'],
+                'customer_email' => $validated['customer_email'],
+                'customer_phone' => $validated['customer_phone'] ?? null,
+                'special_instructions' => $validated['special_instructions'] ?? null,
+                'status' => 'pending',
+            ]);
+            $orderIds[] = $order->id;
+        }
+
+        // Clear cart after submission
+        $request->session()->forget('cart');
 
         return response()->json([
             'success' => true,
-            'message' => 'Order request submitted successfully! We will contact you within 24 hours.',
-            'order_id' => $orderRequest->id
+            'message' => 'Order submitted successfully! We will contact you within 24 hours.',
+            'order_ids' => $orderIds,
         ]);
     }
 

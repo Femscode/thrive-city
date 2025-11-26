@@ -40,6 +40,7 @@ Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remov
 
 
 Route::get('/dashboard', [OrderController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/admin', [OrderController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -75,4 +76,8 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     // Delivery price management
     Route::get('delivery', [DeliveryController::class, 'index'])->name('admin.delivery');
     Route::post('delivery', [DeliveryController::class, 'update'])->name('admin.delivery.update');
+    // Admin password update page
+    Route::get('password', function () {
+        return view('admin.password');
+    })->name('admin.password');
 });

@@ -82,6 +82,8 @@ class CartController extends Controller
             if ($request->hasFile('design_file')) {
                 $file = $request->file('design_file');
                 $filename = time() . '_' . $file->getClientOriginalName();
+                //remove white space
+                $filename = str_replace(' ', '', $filename);
                 $destinationPath = public_path('designs');
                 if (!File::isDirectory($destinationPath)) {
                     File::makeDirectory($destinationPath, 0755, true);

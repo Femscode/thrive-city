@@ -89,6 +89,21 @@
                     </svg>
                     <span>Delivery</span>
                 </a>
+                <a href="{{ route('admin.password') }}" class="flex items-center gap-3 px-6 py-3 hover:bg-white/10 transition">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm-7 9v-2a5 5 0 015-5h4a5 5 0 015 5v2H5z" />
+                    </svg>
+                    <span>Reset Password</span>
+                </a>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="flex items-center gap-3 px-6 py-3 hover:bg-white/10 transition">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7" />
+                    </svg>
+                    <span>Logout</span>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                    @csrf
+                </form>
                
             </nav>
         </aside>

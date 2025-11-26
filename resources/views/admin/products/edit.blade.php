@@ -52,7 +52,7 @@
                     </div>
                     <div>
                         @if($product->image)
-                            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="h-24 w-24 object-cover rounded">
+                            <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $product->image }}" alt="{{ $product->name }}" class="h-24 w-24 object-cover rounded">
                         @endif
                     </div>
                 </div>

@@ -51,7 +51,7 @@
                     <div class="product-card" data-category="{{ strtolower($product->category->name ?? 'general') }}" data-product-id="{{ $product->id }}" data-customizable="{{ $product->customizable ? '1' : '0' }}">
                         <div class="product-image">
                             @if($product->image)
-                                <img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
+                                <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $product->image }}" alt="{{ $product->name }}">
                             @else
                                 <div class="product-image-fallback">No Image</div>
                             @endif

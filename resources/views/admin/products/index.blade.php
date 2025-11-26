@@ -37,7 +37,7 @@
                             <tr class="border-t">
                                 <td class="px-3 py-2">
                                     @if($product->image)
-                                        <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="h-10 w-10 object-cover rounded">
+                                        <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $product->image }}" alt="{{ $product->name }}" class="h-10 w-10 object-cover rounded">
                                     @else
                                         <span class="text-slate-400">No image</span>
                                     @endif

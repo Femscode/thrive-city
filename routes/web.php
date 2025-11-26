@@ -21,6 +21,7 @@ Route::get('/our-blogs', [FrontendController::class, 'blogs'])->name('blogs');
 Route::get('/our-blogs/{slug}', [FrontendController::class, 'blogDetails'])->name('blogs.details');
 Route::get('/place-order', [FrontendController::class, 'placeOrder'])->name('place-order');
 Route::post('/place-order', [FrontendController::class, 'submitOrder'])->name('submit-order');
+
 // Stripe payment routes
 Route::post('/payment/checkout', [PaymentController::class, 'createCheckoutSession'])->name('payment.checkout');
 Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment.success');

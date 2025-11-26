@@ -119,7 +119,7 @@
                         </select>
                         <small class="help-text">Hold Ctrl/Cmd to select multiple</small>
                     </div>
-                    @if($product->upload_design)
+                    @if($product->upload_design == 1)
                     <div class="form-group">
                         <label for="apparel-design">Upload Design (optional)</label>
                         <input id="apparel-design" type="file" name="design_file" accept=".jpg,.jpeg,.png,.pdf,.ai,.psd">

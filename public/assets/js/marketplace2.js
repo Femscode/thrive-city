@@ -18,6 +18,8 @@
   var pendingActionUrl = null;
   var pendingProductId = null;
   var pendingQty = 1;
+  var pendingIsCustomizable = false;
+  var pendingAllowDesignUpload = false;
 
   function showModal() {
     if (!modal) return;
@@ -81,10 +83,12 @@
     var allowDesignUpload = (uploadDesignAttr === '1') || (uploadDesignAttr && typeof uploadDesignAttr === 'string' && uploadDesignAttr.toLowerCase() === 'true');
     var actions = card ? card.querySelector('.product-actions') : null;
     var addUrl = actions ? actions.getAttribute('data-add-url') : '';
-    if (productId && isCustomizable) {
+    if (productId && (isCustomizable || allowDesignUpload)) {
       pendingActionUrl = addUrl;
       pendingProductId = productId;
       pendingQty = 1;
+      pendingIsCustomizable = !!isCustomizable;
+      pendingAllowDesignUpload = !!allowDesignUpload;
       // Toggle design upload group based on product capability
       var uploadGroup = document.getElementById('design-upload-group');
       var fileInput = document.getElementById('apparel-design');
@@ -235,29 +239,33 @@
       apparelForm.addEventListener('submit', function (e) {
         e.preventDefault();
         if (!pendingActionUrl || !pendingProductId) { hideModal(); return; }
-
-        var colorVal = colorEl && colorEl.value ? colorEl.value : '';
-        if (!colorVal) {
-          showNotify('Please select a color', 'error');
-          return;
-        }
-
+        // Only require color and placements if the product is customizable
         var selectedPlacements = [];
-        if (placementsSelect) {
-          Array.prototype.forEach.call(placementsSelect.selectedOptions, function (opt) {
-            selectedPlacements.push(opt.value);
-          });
-        }
-        if (selectedPlacements.length === 0) {
-          showNotify('Please select at least one placement', 'error');
-          return;
+        if (pendingIsCustomizable) {
+          var colorVal = colorEl && colorEl.value ? colorEl.value : '';
+          if (!colorVal) {
+            showNotify('Please select a color', 'error');
+            return;
+          }
+          if (placementsSelect) {
+            Array.prototype.forEach.call(placementsSelect.selectedOptions, function (opt) {
+              selectedPlacements.push(opt.value);
+            });
+          }
+          if (selectedPlacements.length === 0) {
+            showNotify('Please select at least one placement', 'error');
+            return;
+          }
         }
 
         var fd = new FormData();
         fd.set('product_id', pendingProductId);
         fd.set('qty', String(pendingQty));
-        fd.set('color', colorVal);
-        selectedPlacements.forEach(function (p) { fd.append('placements[]', p); });
+        if (pendingIsCustomizable) {
+          var colorVal2 = colorEl && colorEl.value ? colorEl.value : '';
+          fd.set('color', colorVal2);
+          selectedPlacements.forEach(function (p) { fd.append('placements[]', p); });
+        }
 
         var fileInput = document.getElementById('apparel-design');
         if (fileInput && fileInput.files && fileInput.files[0]) {

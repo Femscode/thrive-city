@@ -3,7 +3,7 @@
 @section('header')
     <link rel="stylesheet" href="{{ url('assets/css/marketplace.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="{{ url('assets/js/marketplace.js') }}" defer></script>
+    <script src="{{ url('assets/js/marketplace2.js') }}" defer></script>
 @endsection
 
 @section('content')
@@ -48,7 +48,7 @@
 
             <div class="product-grid">
                 @forelse($products as $product)
-                    <div class="product-card" data-category="{{ strtolower($product->category->name ?? 'general') }}" data-product-id="{{ $product->id }}" data-customizable="{{ $product->customizable ? '1' : '0' }}" data-upload-design="{{ $product->upload_design ? '1' : '0' }}">
+                    <div class="product-card" data-category="{{ strtolower($product->category->name ?? 'general') }}" data-product-id="{{ $product->id }}" data-customizable="{{ $product->customizable ? '1' : '0' }}" data-upload-design="{{ $product->upload_design ? 1 : 0 }}">
                         <div class="product-image">
                             @if($product->image)
                                 <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $product->image }}" alt="{{ $product->name }}">

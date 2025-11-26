@@ -95,8 +95,8 @@
                                                 <td class="px-4 py-2">$ {{ number_format($item->price, 2) }}</td>
                                                 <td class="px-4 py-2">
                                                     @if($item->design_file)
-                                                    <img src="https://thrivecitystudio.com/thrivecity-files/public/{{$item->design_file }}" alt="Design Preview" class="w-12 h-12 rounded">
-                                                        <a href="https://thrivecitystudio.com/thrivecity-files/public/{{$item->design_file }}" download class="text-purple-700 hover:underline">Download</a>
+                                                    <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{$item->design_file }}" alt="Design Preview" class="w-12 h-12 rounded">
+                                                        <a href="https://thrivecitystudio.ca/thrivecity-files/public/{{$item->design_file }}" download class="text-purple-700 hover:underline">Download</a>
                                                     @else
                                                         <span class="text-gray-500">None</span>
                                                     @endif

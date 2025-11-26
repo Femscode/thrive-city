@@ -3,6 +3,7 @@
 @section('header')
     <link rel="stylesheet" href="{{ url('assets/css/marketplace.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="{{ url('assets/js/marketplace2.js') }}" defer></script> -->
     <script src="{{ url('assets/js/marketplace2.js') }}" defer></script>
 @endsection
 

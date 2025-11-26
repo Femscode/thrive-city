@@ -34,7 +34,7 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <!-- Customer Information -->
-                <div class="lg:col-span-2">
+                <div class="lg:col-span-3">
                     <div class="od-detail-card p-6 mb-6">
                         <h3 class="text-lg font-semibold brand-text-primary mb-4 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -95,7 +95,8 @@
                                                 <td class="px-4 py-2">$ {{ number_format($item->price, 2) }}</td>
                                                 <td class="px-4 py-2">
                                                     @if($item->design_file)
-                                                        <a href="{{ asset($item->design_file) }}" download class="text-purple-700 hover:underline">Download</a>
+                                                    <img src="https://thrivecitystudio.com/thrivecity-files/public/{{$item->design_file }}" alt="Design Preview" class="w-12 h-12 rounded">
+                                                        <a href="https://thrivecitystudio.com/thrivecity-files/public/{{$item->design_file }}" download class="text-purple-700 hover:underline">Download</a>
                                                     @else
                                                         <span class="text-gray-500">None</span>
                                                     @endif
@@ -184,55 +185,7 @@
                 </div>
 
                 <!-- Design File Preview -->
-                <div class="lg:col-span-1">
-                    <div class="od-detail-card p-6 sticky top-8">
-                        <h3 class="text-lg font-semibold brand-text-primary mb-4 flex items-center">
-                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                            </svg>
-                            Design File
-                        </h3>
-                        
-                        @if($order->design_file)
-                            <div class="text-center">
-                                @php
-                                    $fileExtension = pathinfo($order->design_file, PATHINFO_EXTENSION);
-                                    $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp'];
-                                @endphp
-                                
-                                @if(in_array(strtolower($fileExtension), $imageExtensions))
-                                    <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $order->design_file }}" 
-                                         alt="Design Preview" 
-                                         class="od-design-preview mx-auto mb-4">
-                                @else
-                                    <div class="flex flex-col items-center justify-center p-8 bg-gray-100 rounded-lg mb-4">
-                                        <svg class="w-16 h-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                        </svg>
-                                        <p class="text-gray-600 font-medium">{{ strtoupper($fileExtension) }} File</p>
-                                        <p class="text-gray-500 text-sm">Preview not available</p>
-                                    </div>
-                                @endif
-                                
-                                <a href="{{ asset($order->design_file) }}" 
-                                   download 
-                                   class="od-btn-outline w-full text-center block">
-                                    <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                    </svg>
-                                    Download Design
-                                </a>
-                            </div>
-                        @else
-                            <div class="text-center py-8">
-                                <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                </svg>
-                                <p class="text-gray-500">No design file uploaded</p>
-                            </div>
-                        @endif
-                    </div>
-                </div>
+              
             </div>
         </div>
     </div>

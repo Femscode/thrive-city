@@ -16,7 +16,8 @@
         .btn-primary { background: #111827; color: #fff; }
         .btn-primary:hover { background: #0b1220; }
     </style>
-    @vite('resources/css/app.css')
+     <link rel="stylesheet" href="{{ url('assets/css/app.css') }}">
+
 </head>
 <body>
 <div class="wrap">

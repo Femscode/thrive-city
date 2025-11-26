@@ -69,7 +69,16 @@ class CartController extends Controller
                 $item['placements'] = $validated['placements'];
             }
 
-            // Optional design file upload
+            // Optional design file upload (only if product allows uploads)
+            if ($request->hasFile('design_file') && !$product->upload_design) {
+                if ($request->expectsJson()) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Design upload is not allowed for this product',
+                    ], 422);
+                }
+                return redirect()->route('cart.index')->with('error', 'Design upload is not allowed for this product');
+            }
             if ($request->hasFile('design_file')) {
                 $file = $request->file('design_file');
                 $filename = time() . '_' . $file->getClientOriginalName();

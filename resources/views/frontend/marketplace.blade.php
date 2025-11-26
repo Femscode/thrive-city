@@ -48,7 +48,7 @@
 
             <div class="product-grid">
                 @forelse($products as $product)
-                    <div class="product-card" data-category="{{ strtolower($product->category->name ?? 'general') }}" data-product-id="{{ $product->id }}" data-customizable="{{ $product->customizable ? '1' : '0' }}">
+                    <div class="product-card" data-category="{{ strtolower($product->category->name ?? 'general') }}" data-product-id="{{ $product->id }}" data-customizable="{{ $product->customizable ? '1' : '0' }}" data-upload-design="{{ $product->upload_design ? '1' : '0' }}">
                         <div class="product-image">
                             @if($product->image)
                                 <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $product->image }}" alt="{{ $product->name }}">
@@ -117,14 +117,12 @@
                             <option value="right_sleeve">Right sleeve</option>
                             <option value="left_sleeve">Left sleeve</option>
                         </select>
-                        <small class="help-text">Hold Ctrl/Cmd to select multiple {{ $product->upload_design }}</small>
+                        <small class="help-text">Hold Ctrl/Cmd to select multiple</small>
                     </div>
-                    @if($product->upload_design == 1)
-                    <div class="form-group">
+                    <div class="form-group" id="design-upload-group" style="display: none;">
                         <label for="apparel-design">Upload Design (optional)</label>
                         <input id="apparel-design" type="file" name="design_file" accept=".jpg,.jpeg,.png,.pdf,.ai,.psd">
                     </div>
-                    @endif
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-secondary modal-cancel">Cancel</button>

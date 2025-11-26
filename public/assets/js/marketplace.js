@@ -77,12 +77,23 @@
     var productId = card ? card.getAttribute('data-product-id') : null;
     var customizableAttr = card ? card.getAttribute('data-customizable') : null;
     var isCustomizable = (customizableAttr === '1') || (customizableAttr && typeof customizableAttr === 'string' && customizableAttr.toLowerCase() === 'true');
+    var uploadDesignAttr = card ? card.getAttribute('data-upload-design') : null;
+    var allowDesignUpload = (uploadDesignAttr === '1') || (uploadDesignAttr && typeof uploadDesignAttr === 'string' && uploadDesignAttr.toLowerCase() === 'true');
     var actions = card ? card.querySelector('.product-actions') : null;
     var addUrl = actions ? actions.getAttribute('data-add-url') : '';
     if (productId && isCustomizable) {
       pendingActionUrl = addUrl;
       pendingProductId = productId;
       pendingQty = 1;
+      // Toggle design upload group based on product capability
+      var uploadGroup = document.getElementById('design-upload-group');
+      var fileInput = document.getElementById('apparel-design');
+      if (uploadGroup) {
+        uploadGroup.style.display = allowDesignUpload ? '' : 'none';
+      }
+      if (!allowDesignUpload && fileInput) {
+        try { fileInput.value = ''; } catch (e) {}
+      }
       showModal();
       return;
     }

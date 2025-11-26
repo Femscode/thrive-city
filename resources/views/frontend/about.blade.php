@@ -109,7 +109,7 @@
                 Let's work together to transform your vision into a digital reality. Whether you're looking to build a new website, enhance your brand, or develop a custom solution, we're here to help you thrive.
             </p>
             <div class="cta-buttons">
-                <a href="/place-order" class="btn-primary">Place Order</a>
+                <a href="/marketplace" class="btn-primary">Place Order</a>
                 <a href="/our-portfolio" class="btn-secondary">View Our Work</a>
             </div>
         </div>

@@ -35,14 +35,13 @@
                     <a href="/about-us" class="nav-link">About us</a>
                     <a href="/our-portfolio" class="nav-link">Our Portfolio</a>
                     <a href="/our-blogs" class="nav-link">Our Blogs</a>
-                    <a href="/marketplace" class="nav-link">Marketplace</a>
                     <a href="/cart" class="nav-link">Cart</a>
                     <a href="/contact-us" class="nav-link">Contact Us</a>
                 </div>
 
                 <!-- Contact Button -->
                 <div class="nav-menu desktop">
-                    <a href="/place-order" class="contact-btn">Place Order</a>
+                    <a href="/marketplace" class="contact-btn">Shop</a>
                 </div>
 
                 <!-- Mobile menu button -->
@@ -73,7 +72,7 @@
                         <a href="/about-us" class="mobile-nav-link">About Us</a>
                         <a href="/marketplace" class="mobile-nav-link">Marketplace</a>
                         <a href="/cart" class="mobile-nav-link">Cart</a>
-                        <a href="/place-order" class="mobile-nav-link">Checkout</a>
+                        <a href="/checkout" class="mobile-nav-link">Checkout</a>
                         <a href="/contact-us" class="mobile-contact-btn">Contact Us</a>
                     </div>
                 </div>
@@ -140,7 +139,7 @@
                         <li><a href="#" class="footer-link">Our Services</a></li>
                         <li><a href="/our-portfolio" class="footer-link">Portfolio</a></li>
                         <li><a href="#faq" class="footer-link">FAQs</a></li>
-                        <li><a href="/place-order" class="footer-link">Place Order</a></li>
+                        <li><a href="/marketplace" class="footer-link">Marketplace</a></li>
                     </ul>
                 </div>
 

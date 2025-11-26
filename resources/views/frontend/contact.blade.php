@@ -106,7 +106,7 @@
             <h2>Ready to Transform Your Digital Presence?</h2>
             <p>Let's work together to create something amazing. Place an order and discover how we can help your business thrive online.</p>
             <div class="cta-buttons">
-                <a href="/place-order" class="btn-primary">Place An Order Now</a>
+                <a href="/marketplace" class="btn-primary">Place An Order Now</a>
             </div>
         </div>
     </div>

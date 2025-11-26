@@ -48,7 +48,7 @@
 
                 <!-- CTA Buttons -->
                 <div class="cta-buttons">
-                    <a href="/place-order" class="btn-primary">Place Order</a>
+                    <a href="/marketplace" class="btn-primary">Place Order</a>
                     <a href="/our-portfolio" class="btn-secondary">View Portfolio</a>
                 </div>
             </div>
@@ -192,7 +192,7 @@
                     </div>
                 </div>
 
-                <a href="/place-order" class="cta-button">Place Order</a>
+                <a href="/marketplace" class="cta-button">Place Order</a>
             </div>
         </div>
     </div>
@@ -287,7 +287,7 @@
                     </div>
                 </div>
 
-                <a href="/place-order" class="cta-button">Start Your Project</a>
+                <a href="/marketplace" class="cta-button">Start Your Project</a>
             </div>
         </div>
     </div>

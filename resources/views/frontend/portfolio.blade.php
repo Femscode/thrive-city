@@ -256,7 +256,7 @@
                 <h2>Ready to Start Your Project?</h2>
                 <p>Let's collaborate to bring your vision to life with our creative expertise and innovative solutions.</p>
                 <div class="cta-buttons">
-                    <a href="/place-order" class="btn-primary">Get Started</a>
+                    <a href="/marketplace" class="btn-primary">Get Started</a>
                 </div>
             </div>
         </div>

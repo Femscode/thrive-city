@@ -117,7 +117,7 @@
                             <option value="right_sleeve">Right sleeve</option>
                             <option value="left_sleeve">Left sleeve</option>
                         </select>
-                        <small class="help-text">Hold Ctrl/Cmd to select multiple</small>
+                        <small class="help-text">Hold Ctrl/Cmd to select multiple {{ $product->upload_design }}</small>
                     </div>
                     @if($product->upload_design == 1)
                     <div class="form-group">

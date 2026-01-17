@@ -104,6 +104,7 @@ class PaymentController extends Controller
                 'color' => $item['color'] ?? null,
                 'placements' => $item['placements'] ?? null,
                 'design_file' => $item['design_file'] ?? null,
+                'back_design' => $item['back_design'] ?? null,
                 'price' => $item['price'] ?? 0,
                 'qty' => $item['qty'] ?? 1,
             ]);

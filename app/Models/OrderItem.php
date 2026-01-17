@@ -15,6 +15,7 @@ class OrderItem extends Model
         'color',
         'placements',
         'design_file',
+        'back_design',
         'price',
         'qty',
     ];

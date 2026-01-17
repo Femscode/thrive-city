@@ -5,7 +5,6 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Management Dashboard') }}
         </h2>
-      
     </div>
 @endsection
 
@@ -71,6 +70,53 @@
                 </div>
             </div>
 
+            <div class="mt-2">
+                <div class="dash-card">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div class="flex items-start gap-3">
+                            <div class="dash-icon dash-icon-orange">
+                                <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M5 7l1 12h12l1-12M8 10h2m4 0h2" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="dash-label">Marketplace</p>
+                                <p class="text-slate-900 font-semibold text-lg">Share your shop link with customers</p>
+                                <p class="text-slate-500 text-sm mt-1">Copy the URL or preview the marketplace page in one click.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2 md:w-96">
+                            <div class="flex items-center gap-2">
+                                <input
+                                    id="marketplace-url-input"
+                                    type="text"
+                                    readonly
+                                    class="flex-1 border border-slate-300 rounded px-3 py-2 text-sm bg-slate-50"
+                                    value="{{ route('marketplace') }}"
+                                >
+                                <button
+                                    type="button"
+                                    id="marketplace-copy-btn"
+                                    class="btn-outline text-sm whitespace-nowrap"
+                                >
+                                    Copy Link
+                                </button>
+                            </div>
+                            <a
+                                href="{{ route('marketplace') }}"
+                                target="_blank"
+                                class="btn-gradient inline-flex justify-center items-center gap-2 text-sm"
+                            >
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 15l6-6M7 7h10v10" />
+                                </svg>
+                                <span>View Marketplace</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
                 <div class="lg:col-span-2 bg-white shadow-sm sm:rounded-lg p-6">
                     <div class="flex items-center justify-between mb-4">
@@ -121,3 +167,36 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var input = document.getElementById('marketplace-url-input');
+            var btn = document.getElementById('marketplace-copy-btn');
+            if (!input || !btn) return;
+            btn.addEventListener('click', function () {
+                var url = input.value;
+                if (!url) return;
+                var originalText = btn.textContent;
+                var setCopiedState = function () {
+                    btn.textContent = 'Copied!';
+                    btn.disabled = true;
+                    setTimeout(function () {
+                        btn.textContent = originalText;
+                        btn.disabled = false;
+                    }, 1500);
+                };
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(url).then(setCopiedState);
+                } else {
+                    input.focus();
+                    input.select();
+                    try {
+                        document.execCommand('copy');
+                        setCopiedState();
+                    } catch (e) {}
+                }
+            });
+        });
+    </script>
+@endpush

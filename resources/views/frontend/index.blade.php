@@ -82,7 +82,7 @@
 
                     <!-- Product Mockups -->
                     <div class="product-mockups">
-                        <img src="{{ url('assets/images/hero2.jpg') }}" alt="Product Mockup" class="hero-image">
+                        <img src="{{ url('assets/images/1.png') }}" alt="Product Mockup" class="hero-image">
                     </div>
 
                     <!-- Floating Elements -->
@@ -174,7 +174,7 @@
             <div class="custom-design-image">
                 <div class="product-showcase">
 
-                    <img src="{{ url('assets/images/hoodie.jpg') }}" width="300px" alt="Hoodie Mockup">
+                    <img src="{{ url('assets/images/3.png') }}" width="300px" alt="Hoodie Mockup">
 
                 </div>
             </div>
@@ -254,7 +254,7 @@
             <div class="brand-experiences-image">
                 <div class="tote-showcase">
                     <div class="tote-mockup">
-                        <img src="{{ url('assets/images/bag.jpg') }}" width="300px" alt="Hoodie Mockup">
+                        <img src="{{ url('assets/images/2.png') }}" width="300px" alt="Hoodie Mockup">
 
                     </div>
                 </div>
@@ -270,7 +270,7 @@
             <!-- Visual Side -->
             <div class="collaborate-visual">
 
-                <img src="{{ url('assets/images/hero1.jpg') }}" width="300px" alt="Hoodie Mockup">
+                <img src="{{ url('assets/images/5.png') }}" width="300px" alt="Hoodie Mockup">
                 <!-- Background Pattern -->
 
 

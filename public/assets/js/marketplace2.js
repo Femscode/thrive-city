@@ -6,7 +6,10 @@
   var modalCancel = modal ? modal.querySelector('.modal-cancel') : null;
   var apparelForm = document.getElementById('apparel-form');
   var placementsSelect = document.getElementById('apparel-placements');
+  var sizeEl = document.getElementById('apparel-size');
   var colorEl = document.getElementById('apparel-color');
+  var colorOtherGroup = document.getElementById('color-other-group');
+  var colorOtherEl = document.getElementById('apparel-color-other');
   var colorSwatch = document.getElementById('color-swatch');
   var cartBarEl = document.getElementById('cart-cta-bar');
   var filterPills = document.querySelectorAll('.filter-pill');
@@ -242,9 +245,18 @@
         // Only require color and placements if the product is customizable
         var selectedPlacements = [];
         if (pendingIsCustomizable) {
-          var colorVal = colorEl && colorEl.value ? colorEl.value : '';
+          var rawColor = colorEl && colorEl.value ? colorEl.value : '';
+          var colorVal = rawColor;
+          if (rawColor === 'other') {
+            colorVal = colorOtherEl && colorOtherEl.value ? colorOtherEl.value.trim() : '';
+          }
+          var sizeVal = sizeEl && sizeEl.value ? sizeEl.value : '';
           if (!colorVal) {
             showNotify('Please select a color', 'error');
+            return;
+          }
+          if (!sizeVal) {
+            showNotify('Please select a size', 'error');
             return;
           }
           if (placementsSelect) {
@@ -262,14 +274,26 @@
         fd.set('product_id', pendingProductId);
         fd.set('qty', String(pendingQty));
         if (pendingIsCustomizable) {
-          var colorVal2 = colorEl && colorEl.value ? colorEl.value : '';
+          var rawColor2 = colorEl && colorEl.value ? colorEl.value : '';
+          var colorVal2 = rawColor2;
+          if (rawColor2 === 'other') {
+            colorVal2 = colorOtherEl && colorOtherEl.value ? colorOtherEl.value.trim() : '';
+          }
+          var sizeVal2 = sizeEl && sizeEl.value ? sizeEl.value : '';
           fd.set('color', colorVal2);
+          if (sizeVal2) {
+            fd.set('size', sizeVal2);
+          }
           selectedPlacements.forEach(function (p) { fd.append('placements[]', p); });
         }
 
         var fileInput = document.getElementById('apparel-design');
+        var backInput = document.getElementById('apparel-back-design');
         if (fileInput && fileInput.files && fileInput.files[0]) {
           fd.set('design_file', fileInput.files[0]);
+        }
+        if (backInput && backInput.files && backInput.files[0]) {
+          fd.set('back_design', backInput.files[0]);
         }
 
         fetch(pendingActionUrl || '', {
@@ -296,9 +320,15 @@
 
   // Update color swatch to reflect selected color
   function updateColorSwatch() {
-    if (!colorSwatch) return;
+    if (!colorEl || !colorSwatch) return;
     var map = { black: '#000000', white: '#ffffff', red: '#ef4444', blue: '#3b82f6', green: '#22c55e' };
-    var val = colorEl && colorEl.value ? colorEl.value : '';
+    var val = colorEl.value || '';
+    if (colorOtherGroup) {
+      colorOtherGroup.style.display = (val === 'other') ? 'block' : 'none';
+      if (val !== 'other' && colorOtherEl) {
+        try { colorOtherEl.value = ''; } catch (e) {}
+      }
+    }
     var hex = map[val] || '#e5e7eb';
     colorSwatch.style.backgroundColor = hex;
     colorSwatch.style.borderColor = (val === 'white' ? '#cbd5e1' : hex);
@@ -308,6 +338,7 @@
     bindActions();
     bindModal();
     bindFilters();
+    bindImageThumbnails();
     if (colorEl) {
       colorEl.addEventListener('change', updateColorSwatch);
       updateColorSwatch();
@@ -320,5 +351,28 @@
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
+  }
+
+  function bindImageThumbnails() {
+    var cards = document.querySelectorAll('.product-card');
+    Array.prototype.forEach.call(cards, function (card) {
+      var mainImg = card.querySelector('.product-image-main img');
+      var thumbs = card.querySelectorAll('.product-thumbnail');
+      if (!mainImg || !thumbs.length) {
+        return;
+      }
+      Array.prototype.forEach.call(thumbs, function (thumb) {
+        thumb.addEventListener('click', function () {
+          var src = thumb.getAttribute('data-src');
+          if (src) {
+            mainImg.src = src;
+          }
+          Array.prototype.forEach.call(thumbs, function (t) {
+            t.classList.remove('is-active');
+          });
+          thumb.classList.add('is-active');
+        });
+      });
+    });
   }
 })();

@@ -43,7 +43,10 @@ class FrontendController extends Controller
     }
 
     public function marketplace() {
-        $products = \App\Models\Product::where('is_active', true)->orderBy('created_at', 'desc')->paginate(12);
+        $products = \App\Models\Product::with(['category', 'images'])
+            ->where('is_active', true)
+            ->orderBy('created_at', 'desc')
+            ->paginate(12);
         $cart = session('cart', []);
         $cartMap = [];
         foreach ($cart as $item) {
@@ -80,6 +83,7 @@ class FrontendController extends Controller
                 'color' => $item['color'] ?? null,
                 'placements' => $item['placements'] ?? null,
                 'design_file' => $item['design_file'] ?? null,
+                'back_design' => $item['back_design'] ?? null,
                 'customer_name' => $validated['customer_name'],
                 'customer_email' => $validated['customer_email'],
                 'customer_phone' => $validated['customer_phone'] ?? null,
@@ -103,4 +107,3 @@ class FrontendController extends Controller
         return view('frontend.contact');
     }
 }
-

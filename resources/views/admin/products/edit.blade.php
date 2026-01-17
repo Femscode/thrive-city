@@ -20,11 +20,6 @@
                         @error('name')<p class="text-red-600 text-sm">{{ $message }}</p>@enderror
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-slate-700">Size (optional)</label>
-                        <input type="text" name="size" value="{{ old('size', $product->size) }}" placeholder="e.g., S, M, L" class="mt-1 w-full border border-slate-300 rounded px-3 py-2">
-                        @error('size')<p class="text-red-600 text-sm">{{ $message }}</p>@enderror
-                    </div>
-                    <div>
                         <label class="block text-sm font-medium text-slate-700">Category</label>
                         <select name="category_id" class="mt-1 w-full border border-slate-300 rounded px-3 py-2" required>
                             @foreach($categories as $cat)
@@ -34,7 +29,7 @@
                         @error('category_id')<p class="text-red-600 text-sm">{{ $message }}</p>@enderror
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-slate-700">Price (USD)</label>
+                        <label class="block text-sm font-medium text-slate-700">Price (CAD)</label>
                         <input type="number" step="0.01" name="price" value="{{ old('price', $product->price) }}" class="mt-1 w-full border border-slate-300 rounded px-3 py-2" required>
                         @error('price')<p class="text-red-600 text-sm">{{ $message }}</p>@enderror
                     </div>
@@ -49,10 +44,22 @@
                         <label class="block text-sm font-medium text-slate-700">Image</label>
                         <input type="file" name="image" accept="image/*" class="mt-1">
                         @error('image')<p class="text-red-600 text-sm">{{ $message }}</p>@enderror
+                        <div class="mt-4">
+                            <label class="block text-sm font-medium text-slate-700">Additional Images</label>
+                            <input type="file" name="gallery_images[]" accept="image/*" multiple class="mt-1">
+                            @error('gallery_images.*')<p class="text-red-600 text-sm">{{ $message }}</p>@enderror
+                        </div>
                     </div>
                     <div>
                         @if($product->image)
                             <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $product->image }}" alt="{{ $product->name }}" class="h-24 w-24 object-cover rounded">
+                        @endif
+                        @if($product->images && $product->images->count())
+                            <div class="mt-2 flex flex-wrap gap-2">
+                                @foreach($product->images as $img)
+                                    <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $img->image }}" alt="{{ $product->name }}" class="h-16 w-16 object-cover rounded">
+                                @endforeach
+                            </div>
                         @endif
                     </div>
                 </div>

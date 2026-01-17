@@ -185,7 +185,46 @@
                 </div>
 
                 <!-- Design File Preview -->
-              
+                @if($order->design_file || $order->back_design)
+                <div class="od-detail-card p-6">
+                    <h3 class="text-lg font-semibold brand-text-primary mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14"></path>
+                        </svg>
+                        Design Files
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <div class="od-info-label">Front Design</div>
+                            @if($order->design_file)
+                                <div class="mt-2">
+                                    <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $order->design_file }}" alt="Front design" class="od-design-preview">
+                                    <div class="mt-3 flex items-center gap-4">
+                                        <a href="https://thrivecitystudio.ca/thrivecity-files/public/{{ $order->design_file }}" target="_blank" class="text-purple-700 hover:underline">View</a>
+                                        <a href="https://thrivecitystudio.ca/thrivecity-files/public/{{ $order->design_file }}" download class="text-purple-700 hover:underline">Download</a>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="od-info-value text-gray-500 mt-2">None</div>
+                            @endif
+                        </div>
+                        <div>
+                            <div class="od-info-label">Back Design</div>
+                            @if($order->back_design)
+                                <div class="mt-2">
+                                    <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $order->back_design }}" alt="Back design" class="od-design-preview">
+                                    <div class="mt-3 flex items-center gap-4">
+                                        <a href="https://thrivecitystudio.ca/thrivecity-files/public/{{ $order->back_design }}" target="_blank" class="text-purple-700 hover:underline">View</a>
+                                        <a href="https://thrivecitystudio.ca/thrivecity-files/public/{{ $order->back_design }}" download class="text-purple-700 hover:underline">Download</a>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="od-info-value text-gray-500 mt-2">None</div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
     </div>

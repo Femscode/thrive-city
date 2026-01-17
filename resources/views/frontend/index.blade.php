@@ -12,44 +12,59 @@
             <!-- Hero Content -->
             <div class="hero-content">
                 <!-- Feature Tags -->
-                <div class="feature-tags">
-                    <div class="feature-tag">
-                        <div class="feature-icon">
-                            <svg fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                        </div>
-                        <span class="feature-text">Custom Design Solutions</span>
-                    </div>
-                    <div class="feature-tag">
-                        <div class="feature-icon">
-                            <svg fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                        </div>
-                        <span class="feature-text">Brand Love & Loyalty Focus</span>
-                    </div>
-                </div>
+               
 
                 <!-- Main Heading -->
                 <h1 class="hero-heading">
-                    Crafting Visibility
-                    That Can't Be
-                    Missed.
+                    Thrive City Studio
                 </h1>
+                <h2>Made for moments that matters.</h2>
 
                 <!-- Description -->
                 <p class="hero-description">
-                    At ThriveCity Studio, we specialize in designing thoughtful,
-                    high-impact merchandise including journals, water bottles,
-                    tote bags, apparel, and more that creates lasting
-                    connections with your audience.
+                    At Thrive City Studio, we turn your ideas into wearable memories.
+                    Whether you’re celebrating something big, something personal, or just want to wear words that reflect your story,
+                    we create apparel that feels meaningful — not generic.
                 </p>
+                 <div class="feature-tags">
+                    <div class="feature-tag">
+                        <div class="feature-icon">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span class="feature-text">Birthdays</span>
+                    </div>
+                    <div class="feature-tag">
+                        <div class="feature-icon">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span class="feature-text">Milestones</span>
+                    </div>
+                    <div class="feature-tag">
+                        <div class="feature-icon">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span class="feature-text">Holidays</span>
+                    </div>
+                    <div class="feature-tag">
+                        <div class="feature-icon">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span class="feature-text">School Events</span>
+                    </div>
+                </div>
 
                 <!-- CTA Buttons -->
                 <div class="cta-buttons">
-                    <a href="/marketplace" class="btn-primary">Place Order</a>
-                    <a href="/our-portfolio" class="btn-secondary">View Portfolio</a>
+                    <a href="{{ route('marketplace') }}" class="btn-primary">Shop Our Collections</a>
+                    <a href="{{ route('marketplace') }}" class="btn-secondary">Start A Custom Order</a>
                 </div>
             </div>
 
@@ -139,13 +154,13 @@
 <section class="services-main">
     <div class="services-container">
         <div class="services-header">
-            <span class="services-label">OUR SERVICES</span>
-            <h2 class="services-title">Merchandise That BuildsBrand Connection</h2>
+            <span class="services-label">WHAT WE CREATE</span>
+            <h2 class="services-title">Custom Apparel For Every Moment</h2>
             <p class="services-description">
-                Discover our thoughtful design approach that creates
-                meaningful merchandise - from custom journals and water
-                bottles to branded tote bags and apparel that your
-                customers will love.
+                We specialize in custom t-shirts, sweatshirts, and hoodies for the moments that matter:
+                birthday shirts (kids and adults), branded apparel for business owners, family reunions,
+                baby showers and maternity, weddings and anniversaries, school events and spirit wear,
+                holiday collections, and motivational everyday wear.
             </p>
         </div>
     </div>
@@ -166,11 +181,13 @@
 
             <!-- Content Side -->
             <div class="custom-design-text">
-                <h3 class="section-title">Custom Design Solutions</h3>
+                <h3 class="section-title">Custom Or Ready-Made — Your Choice</h3>
                 <p class="section-description">
-                    We create unique, thoughtful merchandise designs
-                    tailored to your brand identity and values, ensuring
-                    every piece resonates with your audience.
+                    If it matters to you, we can put it on a shirt.
+                    Have your own design or logo? Send it to us and we’ll bring it to life with
+                    high-quality printing and care. Don’t have a design yet? Shop our ready-made
+                    collections created for seasons, celebrations, and everyday encouragement.
+                    Either way, you get something that feels like you.
                 </p>
 
                 <div class="features-list">
@@ -180,7 +197,7 @@
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                         </div>
-                        <span class="feature-text">Quality Materials</span>
+                        <span class="feature-text">Use Your Own Design/Logo</span>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon">
@@ -188,11 +205,11 @@
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                         </div>
-                        <span class="feature-text">Fast Turnaround</span>
+                        <span class="feature-text">Thoughtfully Curated Collections</span>
                     </div>
                 </div>
 
-                <a href="/marketplace" class="cta-button">Place Order</a>
+                <a href="{{ route('marketplace') }}" class="cta-button">Shop Or Send Us Your Design</a>
             </div>
         </div>
     </div>
@@ -204,11 +221,11 @@
         <div class="brand-experiences-content">
             <!-- Content Side -->
             <div class="brand-experiences-text">
-                <h3 class="section-title">Create Memorable Brand Experiences</h3>
+                <h3 class="section-title">Why Our Customers Love Us</h3>
                 <p class="section-description">
-                    Design merchandise that tells your brand story and
-                    creates lasting connections with your audience through
-                    thoughtful, high-quality products.
+                    We don’t just print shirts. We help people celebrate life.
+                    From birthdays to milestones and everyday motivation,
+                    every order is handled with care, meaning, and attention to detail.
                 </p>
 
                 <div class="features-list">
@@ -218,7 +235,7 @@
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                         </div>
-                        <span class="feature-text">Brand Storytelling</span>
+                        <span class="feature-text">Thoughtful Designs With Meaning</span>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon">
@@ -226,11 +243,11 @@
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                         </div>
-                        <span class="feature-text">Quality Products</span>
+                        <span class="feature-text">Apparel Made For Real-Life Moments</span>
                     </div>
                 </div>
 
-                <a href="/our-portfolio" class="cta-button">View Our Portfolio</a>
+                <a href="{{ route('marketplace') }}" class="cta-button">Explore Our Apparel</a>
             </div>
 
             <!-- Image Side -->
@@ -261,11 +278,10 @@
 
             <!-- Content Side -->
             <div class="collaborate-text">
-                <h3 class="section-title">Collaborate With Creative Professionals</h3>
+                <h3 class="section-title">Ready To Create Something Meaningful?</h3>
                 <p class="section-description">
-                    Work with our experienced design team to bring your
-                    vision to life. We combine creativity, strategy, and
-                    craftsmanship to deliver exceptional results.
+                    Whether you’re marking a milestone, planning an event, or creating everyday pieces that inspire,
+                    we’re here to help you make it memorable with apparel that feels personal and intentional.
                 </p>
 
                 <div class="features-list">
@@ -275,7 +291,7 @@
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                         </div>
-                        <span class="feature-text">Expert Designers</span>
+                        <span class="feature-text">Personalized Service</span>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon">
@@ -283,11 +299,11 @@
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                         </div>
-                        <span class="feature-text">Creative Strategy</span>
+                        <span class="feature-text">Apparel Made For Real Life</span>
                     </div>
                 </div>
 
-                <a href="/marketplace" class="cta-button">Start Your Project</a>
+                <a href="{{ route('marketplace') }}" class="cta-button">Shop Collections</a>
             </div>
         </div>
     </div>
@@ -504,7 +520,7 @@
                     </div>
                 </div>
                 <div class="faq-answer">
-                    <p>You can contact us through our website contact form, email us directly at support@thrivecitystudio.ca, or call us at (555) 123-4567. We typically respond to all inquiries within 24 hours during business days.</p>
+                    <p>You can contact us through our website contact form, email us directly at support@thrivecitystudio.ca, or call us at +1 (437) 239-6950. We typically respond to all inquiries within 24 hours during business days.</p>
                 </div>
             </div>
 

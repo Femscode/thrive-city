@@ -26,7 +26,7 @@
                             <th class="text-left px-3 py-2">Image</th>
                             <th class="text-left px-3 py-2">Name</th>
                             <th class="text-left px-3 py-2">Category</th>
-                            <th class="text-left px-3 py-2">Price (USD)</th>
+                            <th class="text-left px-3 py-2">Price (CAD)</th>
                             <th class="text-left px-3 py-2">Quantity</th>
                             <th class="text-left px-3 py-2">Active</th>
                             <th class="text-left px-3 py-2">Actions</th>

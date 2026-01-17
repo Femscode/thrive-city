@@ -18,6 +18,7 @@ class OrderRequest extends Model
         'color',
         'placements',
         'design_file',
+        'back_design',
         'customer_name',
         'customer_email',
         'customer_phone',

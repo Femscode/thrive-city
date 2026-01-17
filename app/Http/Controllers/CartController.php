@@ -32,10 +32,12 @@ class CartController extends Controller
         $validated = $request->validate([
             'product_id' => 'required|integer|exists:products,id',
             'qty' => 'nullable|integer|min:1',
+            'size' => 'nullable|string|max:60',
             'color' => 'nullable|string|max:60',
             'placements' => 'nullable|array',
             'placements.*' => 'string',
             'design_file' => 'nullable|file|mimes:jpg,jpeg,png,pdf,ai,psd|max:10240',
+            'back_design' => 'nullable|file|mimes:jpg,jpeg,png,pdf,ai,psd|max:10240',
         ]);
 
         $product = Product::findOrFail($validated['product_id']);
@@ -51,6 +53,9 @@ class CartController extends Controller
             if (isset($validated['placements'])) {
                 $cart[$product->id]['placements'] = $validated['placements'];
             }
+            if (isset($validated['size'])) {
+                $cart[$product->id]['size'] = $validated['size'];
+            }
         } else {
             $item = [
                 'id' => $product->id,
@@ -62,6 +67,9 @@ class CartController extends Controller
             ];
 
             // Optional apparel customization
+            if (isset($validated['size'])) {
+                $item['size'] = $validated['size'];
+            }
             if (isset($validated['color'])) {
                 $item['color'] = $validated['color'];
             }
@@ -70,7 +78,7 @@ class CartController extends Controller
             }
 
             // Optional design file upload (only if product allows uploads)
-            if ($request->hasFile('design_file') && !$product->upload_design) {
+            if (($request->hasFile('design_file') || $request->hasFile('back_design')) && !$product->upload_design) {
                 if ($request->expectsJson()) {
                     return response()->json([
                         'success' => false,
@@ -90,6 +98,17 @@ class CartController extends Controller
                 }
                 $file->move($destinationPath, $filename);
                 $item['design_file'] = 'designs/' . $filename;
+            }
+            if ($request->hasFile('back_design')) {
+                $file = $request->file('back_design');
+                $filename = time() . '_back_' . $file->getClientOriginalName();
+                $filename = str_replace(' ', '', $filename);
+                $destinationPath = public_path('designs');
+                if (!File::isDirectory($destinationPath)) {
+                    File::makeDirectory($destinationPath, 0755, true);
+                }
+                $file->move($destinationPath, $filename);
+                $item['back_design'] = 'designs/' . $filename;
             }
 
             $cart[$product->id] = $item;

@@ -50,9 +50,35 @@
             <div class="product-grid">
                 @forelse($products as $product)
                     <div class="product-card" data-category="{{ strtolower($product->category->name ?? 'general') }}" data-product-id="{{ $product->id }}" data-customizable="{{ $product->customizable ? '1' : '0' }}" data-upload-design="{{ $product->upload_design ? 1 : 0 }}">
+                        @php
+                            $imagePaths = [];
+                            if ($product->image) {
+                                $imagePaths[] = $product->image;
+                            }
+                            if ($product->images && $product->images->count()) {
+                                foreach ($product->images as $img) {
+                                    if ($img->image) {
+                                        $imagePaths[] = $img->image;
+                                    }
+                                }
+                            }
+                        @endphp
                         <div class="product-image">
-                            @if($product->image)
-                                <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $product->image }}" alt="{{ $product->name }}">
+                            @if(count($imagePaths))
+                                <div class="product-image-inner">
+                                    <div class="product-image-main">
+                                        <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $imagePaths[0] }}" alt="{{ $product->name }}">
+                                    </div>
+                                    @if(count($imagePaths) > 1)
+                                        <div class="product-thumbnails" aria-hidden="true">
+                                            @foreach($imagePaths as $idx => $path)
+                                                <button type="button" class="product-thumbnail{{ $idx === 0 ? ' is-active' : '' }}" data-src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $path }}">
+                                                    <img src="https://thrivecitystudio.ca/thrivecity-files/public/{{ $path }}" alt="">
+                                                </button>
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                </div>
                             @else
                                 <div class="product-image-fallback">No Image</div>
                             @endif
@@ -104,9 +130,25 @@
                                 <option value="red" style="background-color:#ef4444;color:#fff;">Red</option>
                                 <option value="blue" style="background-color:#3b82f6;color:#fff;">Blue</option>
                                 <option value="green" style="background-color:#22c55e;color:#fff;">Green</option>
+                                <option value="other">Other</option>
                             </select>
                             <span id="color-swatch" class="color-swatch" aria-hidden="true"></span>
                         </div>
+                        <div class="mt-2" id="color-other-group" style="display:none;">
+                            <input type="text" id="apparel-color-other" class="" placeholder="Enter custom color">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="apparel-size">Size</label>
+                        <select id="apparel-size" name="size" required>
+                            <option value="">Select size</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="2XL">2XL</option>
+                            <option value="3XL">3XL</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="apparel-placements">Design Placement</label>
@@ -121,8 +163,17 @@
                         <small class="help-text">Hold Ctrl/Cmd to select multiple</small>
                     </div>
                     <div class="form-group" id="design-upload-group" style="display: none;">
-                        <label for="apparel-design">Upload Design (optional)</label>
-                        <input id="apparel-design" type="file" name="design_file" accept=".jpg,.jpeg,.png,.pdf,.ai,.psd">
+                        <label>Upload Design Files (optional)</label>
+                        <div class="design-upload-row">
+                            <div class="design-upload-col">
+                                <span>Front</span>
+                                <input id="apparel-design" type="file" name="design_file" accept=".jpg,.jpeg,.png,.pdf,.ai,.psd">
+                            </div>
+                            <div class="design-upload-col">
+                                <span>Back</span>
+                                <input id="apparel-back-design" type="file" name="back_design" accept=".jpg,.jpeg,.png,.pdf,.ai,.psd">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

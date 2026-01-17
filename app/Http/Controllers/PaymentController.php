@@ -84,6 +84,7 @@ class PaymentController extends Controller
             'color' => null,
             'placements' => null,
             'design_file' => null,
+            'back_design' => null,
             'customer_name' => $validated['customer_name'],
             'customer_email' => $validated['customer_email'],
             'customer_phone' => $validated['customer_phone'] ?? null,
@@ -116,7 +117,7 @@ class PaymentController extends Controller
             $name = $item['name'] ?? 'Item';
             $lineItems[] = [
                 'price_data' => [
-                    'currency' => 'usd',
+                    'currency' => 'cad',
                     'product_data' => [
                         'name' => $name,
                     ],
@@ -131,7 +132,7 @@ class PaymentController extends Controller
         if ($deliveryPrice > 0) {
             $lineItems[] = [
                 'price_data' => [
-                    'currency' => 'usd',
+                    'currency' => 'cad',
                     'product_data' => ['name' => 'Delivery'],
                     'unit_amount' => (int) round($deliveryPrice * 100),
                 ],

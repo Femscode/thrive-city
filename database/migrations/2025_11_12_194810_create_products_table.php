@@ -12,7 +12,7 @@ return new class extends Migration {
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->decimal('price', 10, 2); // USD
+            $table->decimal('price', 10, 2); // CAD
             $table->unsignedInteger('quantity')->default(0);
             $table->string('image')->nullable(); // public path e.g., products/uuid.png
             $table->text('description')->nullable();

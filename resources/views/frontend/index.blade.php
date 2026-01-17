@@ -49,7 +49,7 @@
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                         </div>
-                        <span class="feature-text">Holidays</span>
+                        <span class="feature-text">Business Owners</span>
                     </div>
                     <div class="feature-tag">
                         <div class="feature-icon">
@@ -82,7 +82,7 @@
 
                     <!-- Product Mockups -->
                     <div class="product-mockups">
-                        <img src="{{ url('assets/images/1.png') }}" alt="Product Mockup" class="hero-image">
+                        <img src="{{ url('assets/images/newhero.png') }}" alt="Product Mockup" class="hero-image">
                     </div>
 
                     <!-- Floating Elements -->
@@ -174,7 +174,7 @@
             <div class="custom-design-image">
                 <div class="product-showcase">
 
-                    <img src="{{ url('assets/images/3.png') }}" width="300px" alt="Hoodie Mockup">
+                    <img src="{{ url('assets/images/6.png') }}" width="300px" alt="Hoodie Mockup">
 
                 </div>
             </div>
@@ -254,7 +254,7 @@
             <div class="brand-experiences-image">
                 <div class="tote-showcase">
                     <div class="tote-mockup">
-                        <img src="{{ url('assets/images/2.png') }}" width="300px" alt="Hoodie Mockup">
+                        <img src="{{ url('assets/images/1.png') }}" width="300px" alt="Hoodie Mockup">
 
                     </div>
                 </div>

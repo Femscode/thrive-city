@@ -70,6 +70,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
     Route::patch('products/{product}/toggle-active', [ProductController::class, 'toggleActive'])->name('products.toggle-active');
+    Route::post('products/{product}/duplicate', [ProductController::class, 'duplicate'])->name('products.duplicate');
     Route::get('orders', [OrderController::class, 'list'])->name('orders.index');
     Route::get('analytics', [AnalyticsController::class, 'index'])->name('admin.analytics');
     Route::get('payments', [PaymentController::class, 'index'])->name('admin.payments');

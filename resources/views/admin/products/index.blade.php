@@ -96,12 +96,16 @@
                                         <span class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition peer-checked:translate-x-6"></span>
                                     </label>
                                 </td>
-                                <td class="px-3 py-2">
-                                    <a href="{{ route('products.edit', $product) }}" class="btn-outline">Edit</a>
+                                <td class="px-3 py-2 space-x-1">
+                                    <a href="{{ route('products.edit', $product) }}" class="btn-outline inline-block mb-1">Edit</a>
+                                    <form action="{{ route('products.duplicate', $product) }}" method="POST" class="inline">
+                                        @csrf
+                                        <button type="submit" class="btn-outline inline-block mb-1">Duplicate</button>
+                                    </form>
                                     <form action="{{ route('products.destroy', $product) }}" method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn-outline" onclick="return confirm('Delete this product?')">Delete</button>
+                                        <button type="submit" class="btn-outline inline-block mb-1" onclick="return confirm('Delete this product?')">Delete</button>
                                     </form>
                                 </td>
                             </tr>

@@ -181,6 +181,40 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Product deleted successfully');
     }
 
+    public function duplicate(Product $product)
+    {
+        $slugBase = Str::slug($product->name);
+        $slug = $slugBase;
+        $i = 1;
+        while (Product::where('slug', $slug)->exists()) {
+            $slug = $slugBase . '-' . $i++;
+        }
+
+        $newProduct = Product::create([
+            'category_id' => $product->category_id,
+            'name' => $product->name,
+            'slug' => $slug,
+            'price' => $product->price,
+            'quantity' => $product->quantity,
+            'image' => $product->image,
+            'description' => $product->description,
+            'is_active' => $product->is_active,
+            'customizable' => $product->customizable,
+            'upload_design' => $product->upload_design,
+        ]);
+
+        $gallery = $product->images()->get();
+        foreach ($gallery as $image) {
+            ProductImage::create([
+                'product_id' => $newProduct->id,
+                'image' => $image->image,
+                'position' => $image->position,
+            ]);
+        }
+
+        return redirect()->route('products.index')->with('success', 'Product duplicated successfully');
+    }
+
     public function toggleActive(Request $request, Product $product)
     {
         $validated = $request->validate([

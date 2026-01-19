@@ -21,7 +21,9 @@
   var pendingActionUrl = null;
   var pendingProductId = null;
   var pendingQty = 1;
-  var pendingIsCustomizable = false;
+  var pendingSelectSize = false;
+  var pendingSelectColor = false;
+  var pendingSelectPlacement = false;
   var pendingAllowDesignUpload = false;
 
   function showModal() {
@@ -38,9 +40,19 @@
       // clear selections
       Array.prototype.forEach.call(placementsSelect.options, function (opt) { opt.selected = false; });
     }
+    // Reset visibility of all groups
+    ['group-select-size', 'group-select-color', 'group-select-placement', 'design-upload-group'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+    });
+    
     pendingActionUrl = null;
     pendingProductId = null;
     pendingQty = 1;
+    pendingSelectSize = false;
+    pendingSelectColor = false;
+    pendingSelectPlacement = false;
+    pendingAllowDesignUpload = false;
   }
   function showNotify(message, type) {
     // Use SweetAlert toast if available
@@ -80,27 +92,51 @@
 
   function handleAddClick(card) {
     var productId = card ? card.getAttribute('data-product-id') : null;
-    var customizableAttr = card ? card.getAttribute('data-customizable') : null;
-    var isCustomizable = (customizableAttr === '1') || (customizableAttr && typeof customizableAttr === 'string' && customizableAttr.toLowerCase() === 'true');
-    var uploadDesignAttr = card ? card.getAttribute('data-upload-design') : null;
+    
+    // Read new granular customization attributes
+    var selectSizeAttr = card ? card.getAttribute('data-select-size') : '0';
+    var selectColorAttr = card ? card.getAttribute('data-select-color') : '0';
+    var selectPlacementAttr = card ? card.getAttribute('data-select-design-placement') : '0';
+    var uploadDesignAttr = card ? card.getAttribute('data-upload-design') : '0';
+
+    var needSize = (selectSizeAttr === '1');
+    var needColor = (selectColorAttr === '1');
+    var needPlacement = (selectPlacementAttr === '1');
     var allowDesignUpload = (uploadDesignAttr === '1') || (uploadDesignAttr && typeof uploadDesignAttr === 'string' && uploadDesignAttr.toLowerCase() === 'true');
+
     var actions = card ? card.querySelector('.product-actions') : null;
     var addUrl = actions ? actions.getAttribute('data-add-url') : '';
-    if (productId && (isCustomizable || allowDesignUpload)) {
+
+    // Check if any customization is needed
+    if (productId && (needSize || needColor || needPlacement || allowDesignUpload)) {
       pendingActionUrl = addUrl;
       pendingProductId = productId;
       pendingQty = 1;
-      pendingIsCustomizable = !!isCustomizable;
-      pendingAllowDesignUpload = !!allowDesignUpload;
-      // Toggle design upload group based on product capability
+      
+      pendingSelectSize = needSize;
+      pendingSelectColor = needColor;
+      pendingSelectPlacement = needPlacement;
+      pendingAllowDesignUpload = allowDesignUpload;
+
+      // Update visibility of form groups in modal
+      var sizeGroup = document.getElementById('group-select-size');
+      if (sizeGroup) sizeGroup.style.display = needSize ? 'block' : 'none';
+
+      var colorGroup = document.getElementById('group-select-color');
+      if (colorGroup) colorGroup.style.display = needColor ? 'block' : 'none';
+
+      var placementGroup = document.getElementById('group-select-placement');
+      if (placementGroup) placementGroup.style.display = needPlacement ? 'block' : 'none';
+
       var uploadGroup = document.getElementById('design-upload-group');
+      if (uploadGroup) uploadGroup.style.display = allowDesignUpload ? 'block' : 'none';
+
+      // Clear file input if not allowed
       var fileInput = document.getElementById('apparel-design');
-      if (uploadGroup) {
-        uploadGroup.style.display = allowDesignUpload ? '' : 'none';
-      }
       if (!allowDesignUpload && fileInput) {
         try { fileInput.value = ''; } catch (e) {}
       }
+      
       showModal();
       return;
     }
@@ -242,28 +278,28 @@
       apparelForm.addEventListener('submit', function (e) {
         e.preventDefault();
         if (!pendingActionUrl || !pendingProductId) { hideModal(); return; }
-        // Only require color and placements if the product is customizable
+        
         var selectedPlacements = [];
-        if (pendingIsCustomizable) {
-          var rawColor = colorEl && colorEl.value ? colorEl.value : '';
-          var colorVal = rawColor;
-          if (rawColor === 'other') {
-            colorVal = colorOtherEl && colorOtherEl.value ? colorOtherEl.value.trim() : '';
-          }
-          var sizeVal = sizeEl && sizeEl.value ? sizeEl.value : '';
-          if (!colorVal) {
-            showNotify('Please select a color', 'error');
-            return;
-          }
-          if (!sizeVal) {
-            showNotify('Please select a size', 'error');
-            return;
-          }
-          if (placementsSelect) {
-            Array.prototype.forEach.call(placementsSelect.selectedOptions, function (opt) {
-              selectedPlacements.push(opt.value);
-            });
-          }
+        var rawColor = colorEl && colorEl.value ? colorEl.value : '';
+        var colorVal = rawColor;
+        if (rawColor === 'other') {
+          colorVal = colorOtherEl && colorOtherEl.value ? colorOtherEl.value.trim() : '';
+        }
+        var sizeVal = sizeEl && sizeEl.value ? sizeEl.value : '';
+
+        // Validation based on enabled fields
+        if (pendingSelectColor && !colorVal) {
+          showNotify('Please select a color', 'error');
+          return;
+        }
+        if (pendingSelectSize && !sizeVal) {
+          showNotify('Please select a size', 'error');
+          return;
+        }
+        if (pendingSelectPlacement && placementsSelect) {
+          Array.prototype.forEach.call(placementsSelect.selectedOptions, function (opt) {
+            selectedPlacements.push(opt.value);
+          });
           if (selectedPlacements.length === 0) {
             showNotify('Please select at least one placement', 'error');
             return;
@@ -273,18 +309,16 @@
         var fd = new FormData();
         fd.set('product_id', pendingProductId);
         fd.set('qty', String(pendingQty));
-        if (pendingIsCustomizable) {
-          var rawColor2 = colorEl && colorEl.value ? colorEl.value : '';
-          var colorVal2 = rawColor2;
-          if (rawColor2 === 'other') {
-            colorVal2 = colorOtherEl && colorOtherEl.value ? colorOtherEl.value.trim() : '';
-          }
-          var sizeVal2 = sizeEl && sizeEl.value ? sizeEl.value : '';
-          fd.set('color', colorVal2);
-          if (sizeVal2) {
-            fd.set('size', sizeVal2);
-          }
-          selectedPlacements.forEach(function (p) { fd.append('placements[]', p); });
+        
+        // Add fields to FormData if enabled
+        if (pendingSelectColor) {
+           fd.set('color', colorVal);
+        }
+        if (pendingSelectSize && sizeVal) {
+           fd.set('size', sizeVal);
+        }
+        if (pendingSelectPlacement) {
+           selectedPlacements.forEach(function (p) { fd.append('placements[]', p); });
         }
 
         var fileInput = document.getElementById('apparel-design');

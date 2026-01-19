@@ -72,13 +72,27 @@
                     <input type="checkbox" name="is_active" value="1" class="rounded" @checked(old('is_active', $product->is_active))>
                     <span>Active</span>
                 </div>
-                <div class="flex items-center gap-2">
-                    <input type="checkbox" name="customizable" value="1" class="rounded" @checked(old('customizable', $product->customizable))>
-                    <span>Customizable<small style="color:red"> If checked, users can select color and design placement</small></span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <input type="checkbox" name="upload_design" value="1" class="rounded" @checked(old('upload_design', $product->upload_design))>
-                    <span>Upload Design<small style="color:red"> If checked, users can upload design</small></span>
+                
+                <div class="border-t pt-4">
+                    <h3 class="text-sm font-medium text-slate-900 mb-2">Customer Customization Options</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="flex items-center gap-2">
+                            <input type="checkbox" name="select_size" value="1" class="rounded" @checked(old('select_size', $product->select_size))>
+                            <span>Customer Selects Size</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <input type="checkbox" name="select_color" value="1" class="rounded" @checked(old('select_color', $product->select_color))>
+                            <span>Customer Selects Color</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <input type="checkbox" name="select_design_placement" value="1" class="rounded" @checked(old('select_design_placement', $product->select_design_placement))>
+                            <span>Customer Selects Design Placement</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <input type="checkbox" name="upload_design" value="1" class="rounded" @checked(old('upload_design', $product->upload_design))>
+                            <span>Customer Uploads Design</span>
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <button type="submit" class="btn-gradient">Update</button>

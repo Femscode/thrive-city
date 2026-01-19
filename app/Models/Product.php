@@ -21,6 +21,9 @@ class Product extends Model
         'description',
         'is_active',
         'customizable',
+        'select_size',
+        'select_color',
+        'select_design_placement',
         'upload_design',
     ];
 
@@ -28,6 +31,10 @@ class Product extends Model
         'price' => 'decimal:2',
         'is_active' => 'boolean',
         'customizable' => 'boolean',
+        'select_size' => 'boolean',
+        'select_color' => 'boolean',
+        'select_design_placement' => 'boolean',
+        'upload_design' => 'boolean',
     ];
 
     public function category(): BelongsTo

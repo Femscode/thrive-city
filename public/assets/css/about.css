@@ -218,7 +218,7 @@
 .value-icon {
     width: 80px;
     height: 80px;
-    /* background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple)); */
+    background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -229,6 +229,11 @@
 }
 .value-icon img {
     border-radius: 10px;
+    display: none;
+}
+.value-icon svg {
+    width: 40px;
+    height: 40px;
 }
 
 .value-card h3 {

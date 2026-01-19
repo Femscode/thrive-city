@@ -58,13 +58,27 @@
                 <input type="checkbox" name="is_active" value="1" class="rounded" checked>
                 <span>Active</span>
             </div>
-            <div class="flex items-center gap-2">
-                <input type="checkbox" name="customizable" value="1" class="rounded" @checked(old('customizable', false))>
-                <span>Customizable<small style="color:red"> If checked, users can select color and design placement</small></span>
-            </div>
-            <div class="flex items-center gap-2">
-                <input type="checkbox" name="upload_design" class="rounded" @checked(old('upload_design', false))>
-                <span>Upload Design<small style="color:red"> If checked, users can upload design</small></span>
+            
+            <div class="border-t pt-4">
+                <h3 class="text-sm font-medium text-slate-900 mb-2">Customer Customization Options</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" name="select_size" value="1" class="rounded" @checked(old('select_size', false))>
+                        <span>Customer Selects Size</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" name="select_color" value="1" class="rounded" @checked(old('select_color', false))>
+                        <span>Customer Selects Color</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" name="select_design_placement" value="1" class="rounded" @checked(old('select_design_placement', false))>
+                        <span>Customer Selects Design Placement</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" name="upload_design" value="1" class="rounded" @checked(old('upload_design', false))>
+                        <span>Customer Uploads Design</span>
+                    </div>
+                </div>
             </div>
                 
             <div>

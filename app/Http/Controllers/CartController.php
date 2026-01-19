@@ -29,18 +29,40 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'product_id' => 'required|integer|exists:products,id',
-            'qty' => 'nullable|integer|min:1',
-            'size' => 'nullable|string|max:60',
-            'color' => 'nullable|string|max:60',
-            'placements' => 'nullable|array',
-            'placements.*' => 'string',
-            'design_file' => 'nullable|file|mimes:jpg,jpeg,png,pdf,ai,psd|max:10240',
-            'back_design' => 'nullable|file|mimes:jpg,jpeg,png,pdf,ai,psd|max:10240',
         ]);
 
-        $product = Product::findOrFail($validated['product_id']);
+        $product = Product::findOrFail($request->product_id);
+
+        $rules = [
+            'qty' => 'nullable|integer|min:1',
+            'design_file' => 'nullable|file|mimes:jpg,jpeg,png,pdf,ai,psd|max:10240',
+            'back_design' => 'nullable|file|mimes:jpg,jpeg,png,pdf,ai,psd|max:10240',
+        ];
+
+        if ($product->select_size) {
+            $rules['size'] = 'required|string|max:60';
+        } else {
+            $rules['size'] = 'nullable|string|max:60';
+        }
+
+        if ($product->select_color) {
+            $rules['color'] = 'required|string|max:60';
+        } else {
+            $rules['color'] = 'nullable|string|max:60';
+        }
+
+        if ($product->select_design_placement) {
+            $rules['placements'] = 'required|array';
+            $rules['placements.*'] = 'string';
+        } else {
+            $rules['placements'] = 'nullable|array';
+            $rules['placements.*'] = 'string';
+        }
+
+        $validated = $request->validate($rules);
+        
         $qty = $validated['qty'] ?? 1;
 
         $cart = $this->getCart($request);

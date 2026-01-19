@@ -37,6 +37,9 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'is_active' => 'nullable|boolean',
             'customizable' => 'nullable|boolean',
+            'select_size' => 'nullable|boolean',
+            'select_color' => 'nullable|boolean',
+            'select_design_placement' => 'nullable|boolean',
             'upload_design' => 'nullable',
         ]);
 
@@ -71,6 +74,9 @@ class ProductController extends Controller
             'description' => $validated['description'] ?? null,
             'is_active' => $request->boolean('is_active', true),
             'customizable' => $request->boolean('customizable', false),
+            'select_size' => $request->boolean('select_size', false),
+            'select_color' => $request->boolean('select_color', false),
+            'select_design_placement' => $request->boolean('select_design_placement', false),
             'upload_design' => $request->boolean('upload_design', false),
         ]);
 
@@ -113,6 +119,9 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'is_active' => 'nullable|boolean',
             'customizable' => 'nullable|boolean',
+            'select_size' => 'nullable|boolean',
+            'select_color' => 'nullable|boolean',
+            'select_design_placement' => 'nullable|boolean',
             'upload_design' => 'nullable|boolean',
         ]);
 
@@ -132,6 +141,9 @@ class ProductController extends Controller
         $product->description = $validated['description'] ?? null;
         $product->is_active = $request->boolean('is_active', true);
         $product->customizable = $request->boolean('customizable', false);
+        $product->select_size = $request->boolean('select_size', false);
+        $product->select_color = $request->boolean('select_color', false);
+        $product->select_design_placement = $request->boolean('select_design_placement', false);
         $product->upload_design = $request->boolean('upload_design', false);
 
         $dest = public_path('products');
@@ -200,6 +212,9 @@ class ProductController extends Controller
             'description' => $product->description,
             'is_active' => $product->is_active,
             'customizable' => $product->customizable,
+            'select_size' => $product->select_size,
+            'select_color' => $product->select_color,
+            'select_design_placement' => $product->select_design_placement,
             'upload_design' => $product->upload_design,
         ]);
 

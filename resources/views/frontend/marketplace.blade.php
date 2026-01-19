@@ -49,7 +49,13 @@
 
             <div class="product-grid">
                 @forelse($products as $product)
-                    <div class="product-card" data-category="{{ strtolower($product->category->name ?? 'general') }}" data-product-id="{{ $product->id }}" data-customizable="{{ $product->customizable ? '1' : '0' }}" data-upload-design="{{ $product->upload_design ? 1 : 0 }}">
+                    <div class="product-card"
+                         data-category="{{ strtolower($product->category->name ?? 'general') }}"
+                         data-product-id="{{ $product->id }}"
+                         data-select-size="{{ $product->select_size ? '1' : '0' }}"
+                         data-select-color="{{ $product->select_color ? '1' : '0' }}"
+                         data-select-design-placement="{{ $product->select_design_placement ? '1' : '0' }}"
+                         data-upload-design="{{ $product->upload_design ? '1' : '0' }}">
                         @php
                             $imagePaths = [];
                             if ($product->image) {
@@ -120,10 +126,10 @@
             </div>
             <form id="apparel-form">
                 <div class="modal-body">
-                    <div class="form-group">
+                    <div class="form-group" id="group-select-color">
                         <label for="apparel-color">Color</label>
                         <div class="color-select-row">
-                            <select id="apparel-color" name="color" required>
+                            <select id="apparel-color" name="color">
                                 <option value="">Select color</option>
                                 <option value="black" style="background-color:#000;color:#fff;">Black</option>
                                 <option value="white" style="background-color:#fff;color:#111;">White</option>
@@ -138,9 +144,9 @@
                             <input type="text" id="apparel-color-other" class="" placeholder="Enter custom color">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="group-select-size">
                         <label for="apparel-size">Size</label>
-                        <select id="apparel-size" name="size" required>
+                        <select id="apparel-size" name="size">
                             <option value="">Select size</option>
                             <option value="S">S</option>
                             <option value="M">M</option>
@@ -150,9 +156,9 @@
                             <option value="3XL">3XL</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="group-select-placement">
                         <label for="apparel-placements">Design Placement</label>
-                        <select id="apparel-placements" name="placements[]" multiple required>
+                        <select id="apparel-placements" name="placements[]" multiple>
                             <option value="front_center">Front center</option>
                             <option value="front_left">Front left</option>
                             <option value="front_right">Front right</option>

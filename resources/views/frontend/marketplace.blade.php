@@ -148,12 +148,18 @@
                         <label for="apparel-size">Size</label>
                         <select id="apparel-size" name="size">
                             <option value="">Select size</option>
-                            <option value="S">S</option>
-                            <option value="M">M</option>
-                            <option value="L">L</option>
-                            <option value="XL">XL</option>
-                            <option value="2XL">2XL</option>
-                            <option value="3XL">3XL</option>
+                            <option value="Toddler 2-3yrs">Toddler 2-3yrs</option>
+                            <option value="Toddler 4-5yrs">Toddler 4-5yrs</option>
+                            <option value="Youth 6-7yrs">Youth 6-7yrs</option>
+                            <option value="Youth 8-9yrs">Youth 8-9yrs</option>
+                            <option value="Youth 10-11yrs">Youth 10-11yrs</option>
+                            <option value="Youth 12-13yrs">Youth 12-13yrs</option>
+                            <option value="Youth 14-15yrs">Youth 14-15yrs</option>
+                            <option value="Adult S">Adult S</option>
+                            <option value="Adult M">Adult M</option>
+                            <option value="Adult L">Adult L</option>
+                            <option value="Adult XL">Adult XL</option>
+                            <option value="Adult 2XL">Adult 2XL</option>
                         </select>
                     </div>
                     <div class="form-group" id="group-select-placement">

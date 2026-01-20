@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ url('assets/css/marketplace.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- <script src="{{ url('assets/js/marketplace2.js') }}" defer></script> -->
-    <script src="{{ url('assets/js/marketplace2.js') }}" defer></script>
+    <script src="{{ url('assets/js/marketplace3.js') }}" defer></script>
 @endsection
 
 @section('content')
@@ -91,7 +91,7 @@
                         </div>
                         <div class="product-info">
                             <div class="product-header">
-                                <h2 class="product-name">{{ $product->name }}</h2>
+                                <h2 style="font-size:15px" class="product-name">{{ $product->name }}</h2>
                                 <span class="product-price">${{ number_format($product->price, 2) }}</span>
                             </div>
                             <p class="product-category">{{ $product->category->name ?? 'Uncategorized' }}</p>

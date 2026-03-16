@@ -1,7 +1,7 @@
 @extends('frontend.master')
 
 @section('header')
-<link rel="stylesheet" href="{{ url('assets/css/index.css') }}">
+<link rel="stylesheet" href="{{ url('assets/css/index2.css') }}">
 
 @endsection
 

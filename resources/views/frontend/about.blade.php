@@ -12,9 +12,8 @@
         <div class="about-hero-content">
             <h1 class="about-hero-title">About Us</h1>
             <p class="about-hero-subtitle">
-                Thrive City Studio was created from a simple belief:
-                life’s moments deserve to be celebrated, remembered, and worn with pride.
-            </p>
+        Thrive City Studio is a Canadian apparel brand created for founders and growing businesses.       
+        </p>
             <p class="about-hero-subtitle">
                 We create custom and ready-to-wear apparel that helps people mark the occasions that matter most — from birthdays, milestones, and family events to holidays, school moments, business branding, and everyday encouragement.
             </p>
@@ -61,6 +60,40 @@
             <div class="story-visual">
                 <div class="story-image">
                     <span>Our Journey Since 2019</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission & Philosophy Section -->
+<section class="mission-philosophy-section">
+    <div class="mission-container">
+        <div class="mission-grid">
+            <div class="mission-main">
+                <div class="mission-badge">OUR MISSION</div>
+                <h2 class="mission-title">Helping Entrepreneurs Look <span class="text-purple">Established</span></h2>
+                <div class="mission-content">
+                    <p>Our mission is to help entrepreneurs show up looking established through professional branded apparel.</p>
+                    <p>Many small businesses are doing incredible work, but their brand presence does not always reflect the level of value they provide. We created Thrive City Studio to change that.</p>
+                    <p>Through premium branded t-shirts, sweatshirts, and apparel designed for visibility, we help founders represent their businesses confidently wherever they go.</p>
+                </div>
+            </div>
+            
+            <div class="philosophy-side">
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>Our Philosophy</h3>
+                    <p>Growing businesses deserve to show up with the same confidence as established brands. The way you present your brand matters.</p>
+                    <p>When people see a founder who represents their business clearly and professionally, trust forms faster and opportunities open more easily.</p>
+                    <div class="philosophy-quote">
+                        At Thrive City Studio, we create apparel that helps entrepreneurs show up ready for those opportunities.
+                    </div>
+                    <div class="philosophy-tagline">Wear Your Brand.</div>
                 </div>
             </div>
         </div>

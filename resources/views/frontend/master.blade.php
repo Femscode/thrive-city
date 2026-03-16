@@ -33,6 +33,7 @@
                 <div class="nav-menu desktop">
                     <a href="/" class="nav-link active">Home</a>
                     <a href="/about-us" class="nav-link">About us</a>
+                    <a href="/services" class="nav-link">Services</a>
                     <a href="/our-portfolio" class="nav-link">Our Portfolio</a>
                     <a href="/our-blogs" class="nav-link">Our Blogs</a>
                     <a href="/cart" class="nav-link">Cart</a>
@@ -67,6 +68,7 @@
                     </div>
                     <div class="mobile-menu-links">
                         <a href="/" class="mobile-nav-link active">Home</a>
+                        <a href="/services" class="mobile-nav-link">Services</a>
                         <a href="/our-blogs" class="mobile-nav-link">Our Blogs</a>
                         <a href="/our-portfolio" class="mobile-nav-link">Our Portfolio</a>
                         <a href="/about-us" class="mobile-nav-link">About Us</a>

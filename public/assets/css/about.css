@@ -399,6 +399,119 @@
     transform: translateY(-2px);
 }
 
+/* ===== MISSION & PHILOSOPHY SECTION ===== */
+.mission-philosophy-section {
+    padding: 100px 0;
+    background: #f8f9fa;
+}
+
+.mission-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.mission-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    align-items: center;
+}
+
+@media (max-width: 991px) {
+    .mission-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+.mission-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(57, 4, 102, 0.1);
+    color: var(--primary-purple);
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+}
+
+.mission-title {
+    font-size: 3rem;
+    color: var(--dark-black);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.text-purple {
+    color: var(--primary-purple);
+}
+
+.mission-content p {
+    font-size: 1.125rem;
+    color: var(--gray-medium);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.philosophy-card {
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+    position: relative;
+}
+
+.philosophy-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-purple);
+    color: var(--white);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.philosophy-card h3 {
+    font-size: 1.75rem;
+    color: var(--primary-purple);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.philosophy-card p {
+    font-size: 1.05rem;
+    color: var(--gray-medium);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
+.philosophy-quote {
+    background: #fdfbff;
+    border-left: 4px solid var(--secondary-purple);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--primary-purple);
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.philosophy-tagline {
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--dark-black);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2rem;
+    text-align: center;
+}
+
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
     .about-hero {

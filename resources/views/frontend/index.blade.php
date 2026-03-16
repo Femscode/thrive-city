@@ -1,8 +1,8 @@
 @extends('frontend.master')
 
 @section('header')
- <link rel="stylesheet" href="{{ url('assets/css/index.css') }}">
-   
+<link rel="stylesheet" href="{{ url('assets/css/index.css') }}">
+
 @endsection
 
 @section('content')
@@ -10,139 +10,67 @@
     <div class="hero-container">
         <div class="hero-grid">
             <!-- Hero Content -->
-            <div class="hero-content">
-                <!-- Feature Tags -->
-               
+            <div class="hero-content animate-fade-up">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Trusted by 500+ Growing Businesses
+                </div>
 
                 <!-- Main Heading -->
                 <h1 class="hero-heading">
-                    Thrive City Studio
+                    Professional <span class="text-gradient">Branded Apparel</span> for Founders.
                 </h1>
-                <h2>Made for moments that matters.</h2>
+                <h2 class="hero-subheading">We help entrepreneurs and teams show up looking established through high-quality branded apparel.</h2>
 
                 <!-- Description -->
                 <p class="hero-description">
-                    At Thrive City Studio, we turn your ideas into wearable memories.
-                    Whether you’re celebrating something big, something personal, or just want to wear words that reflect your story,
-                    we create apparel that feels meaningful — not generic.
+                    From premium branded t-shirts and sweatshirts to apparel designed for events, teams, and brand visibility, Thrive City Studio helps your business show up with confidence.
                 </p>
-                 <div class="feature-tags">
-                    <div class="feature-tag">
-                        <div class="feature-icon">
-                            <svg fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                        </div>
-                        <span class="feature-text">Birthdays</span>
-                    </div>
-                    <div class="feature-tag">
-                        <div class="feature-icon">
-                            <svg fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                        </div>
-                        <span class="feature-text">Milestones</span>
-                    </div>
-                    <div class="feature-tag">
-                        <div class="feature-icon">
-                            <svg fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                        </div>
-                        <span class="feature-text">Business Owners</span>
-                    </div>
-                    <div class="feature-tag">
-                        <div class="feature-icon">
-                            <svg fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                        </div>
-                        <span class="feature-text">School Events</span>
-                    </div>
-                </div>
 
                 <!-- CTA Buttons -->
                 <div class="cta-buttons">
-                    <a href="{{ route('marketplace') }}" class="btn-primary">Shop Our Collections</a>
-                    <a href="{{ route('marketplace') }}" class="btn-secondary">Start A Custom Order</a>
+                    <a href="{{ route('marketplace') }}" class="btn-primary">
+                        <span> Branded Apparel</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4.16663 10H15.8333M15.8333 10L10.8333 5M15.8333 10L10.8333 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <a href="{{ route('marketplace') }}" class="btn-secondary"> Founder’s Bundle</a>
                 </div>
             </div>
 
             <!-- Hero Visual -->
-            <div class="hero-visual">
-                <div class="visual-container">
-                    <!-- Background Pattern -->
-                    <div class="visual-bg-pattern">
-                        <svg viewBox="0 0 400 400" fill="none">
-                            <circle cx="100" cy="100" r="50" stroke="white" stroke-width="2" />
-                            <circle cx="300" cy="150" r="30" stroke="white" stroke-width="2" />
-                            <circle cx="200" cy="300" r="40" stroke="white" stroke-width="2" />
-                        </svg>
-                    </div>
+            <div class="hero-visual animate-fade-in">
+                <div class="visual-wrapper">
+                    <div class="visual-container">
+                        <!-- Background Glows -->
+                        <div class="glow glow-1"></div>
+                        <div class="glow glow-2"></div>
 
-                    <!-- Product Mockups -->
-                    <div class="product-mockups">
-                        <img src="{{ url('assets/images/newhero.png') }}" alt="Product Mockup" class="hero-image">
-                    </div>
+                        <!-- Product Mockups -->
+                        <div class="product-mockups">
+                            <img src="{{ url('assets/images/thrive/thrive4.png') }}" alt="Product Mockup" class="hero-image">
+                        </div>
 
-                    <!-- Floating Elements -->
-                    <div class="floating-element top-right"></div>
-                    <div class="floating-element bottom-left"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
+                        <!-- Floating Stat Card -->
+                        <div class="stat-card floating-y">
+                            <div class="stat-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">Premium Quality</span>
+                                <span class="stat-label">Verified Apparel</span>
+                            </div>
+                        </div>
 
-<!-- Trusted Brands Section -->
-<section class="trusted-brands">
-    <div class="trusted-brands-container">
-        <div class="trusted-brands-content">
-            <h2 class="trusted-brands-title">TRUSTED BY THOUSANDS OF BRANDS GLOBALLY</h2>
-
-            <div class="brands-scroll-container">
-                <div class="brands-grid">
-                    <!-- First set of brands -->
-                    <div class="brand-logo">
-                        <span class="brand-text celeste">Celeste</span>
-                    </div>
-                    <div class="brand-logo">
-                        <span class="brand-text gourmet">Gourmet</span>
-                    </div>
-                    <div class="brand-logo">
-                        <span class="brand-text synco">Synco</span>
-                        <span class="brand-subtitle">LIVE</span>
-                    </div>
-                    <div class="brand-logo">
-                        <span class="brand-text urban">Urban</span>
-                    </div>
-                    <div class="brand-logo">
-                        <span class="brand-text gourmet">Gourmet</span>
-                    </div>
-                    <div class="brand-logo">
-                        <span class="brand-text celeste">Celeste</span>
-                    </div>
-
-                    <!-- Duplicate set for seamless scrolling -->
-                    <div class="brand-logo">
-                        <span class="brand-text celeste">Celeste</span>
-                    </div>
-                    <div class="brand-logo">
-                        <span class="brand-text gourmet">Gourmet</span>
-                    </div>
-                    <div class="brand-logo">
-                        <span class="brand-text synco">Synco</span>
-                        <span class="brand-subtitle">LIVE</span>
-                    </div>
-                    <div class="brand-logo">
-                        <span class="brand-text urban">Urban</span>
-                    </div>
-                    <div class="brand-logo">
-                        <span class="brand-text gourmet">Gourmet</span>
-                    </div>
-                    <div class="brand-logo">
-                        <span class="brand-text celeste">Celeste</span>
+                        <!-- Experience Card -->
+                        <!-- <div class="exp-card floating-y-delayed">
+                            <div class="exp-stars">★★★★★</div>
+                            <div class="exp-text">"Best for our team events!"</div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -150,363 +78,268 @@
     </div>
 </section>
 
-<!-- Services Section -->
-<section class="services-main">
-    <div class="services-container">
-        <div class="services-header">
-            <span class="services-label">WHAT WE CREATE</span>
-            <h2 class="services-title">Custom Apparel For Every Moment</h2>
-            <p class="services-description">
-                We specialize in custom t-shirts, sweatshirts, and hoodies for the moments that matter:
-                birthday shirts (kids and adults), branded apparel for business owners, family reunions,
-                baby showers and maternity, weddings and anniversaries, school events and spirit wear,
-                holiday collections, and motivational everyday wear.
+<!-- Look Established Section -->
+<section class="established-section">
+    <div class="established-container">
+        <div class="established-content">
+            <!-- Image Side -->
+            <div class="established-visual">
+                <div class="visual-frame">
+                    <img src="{{ url('assets/images/thrive/thrive6.png') }}" alt="Founder Apparel">
+                    <div class="floating-badge top-right">Professional Grade</div>
+                    <div class="floating-tag bottom-left">Founder's Choice</div>
+                </div>
+            </div>
+
+            <!-- Content Side -->
+            <div class="established-text">
+                <div class="label-pill">PERCEPTION MATTERS</div>
+                <h3 class="established-title">Look Established Before You <span class="text-purple">Become Established</span></h3>
+                <p class="established-description">
+                    In business, perception matters. Before people hear your pitch, they see your brand.
+                    Professional apparel sends a clear message to your audience:
+                </p>
+
+                <div class="established-features">
+                    <div class="established-feature">
+                        <div class="feature-icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                            </svg>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Serious Business</h4>
+                            <p>Show that your business is serious and ready for growth.</p>
+                        </div>
+                    </div>
+
+                    <div class="established-feature">
+                        <div class="feature-icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Organized Brand</h4>
+                            <p>Present a cohesive, organized brand identity to the world.</p>
+                        </div>
+                    </div>
+
+                    <div class="established-feature">
+                        <div class="feature-icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 8l4 4-4 4M8 12h7" />
+                            </svg>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Ready for Opportunity</h4>
+                            <p>Be prepared for every networking event and client meeting.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="established-footer">
+                    <p>Thrive City Studio helps growing businesses present themselves professionally through high-quality branded apparel. <strong>When your brand shows up well, people take notice.</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- What We Create Section -->
+<section class="create-section">
+    <div class="create-container">
+        <div class="create-header">
+            <div class="label-pill">WHAT WE CREATE</div>
+            <h2 class="create-title">Branded Apparel for Founders & Teams</h2>
+            <p class="create-description">
+                At Thrive City Studio, we design and produce branded apparel for founders, teams, and growing businesses.
+                Our focus is simple: clean design, quality apparel, and vibrant prints that represent your brand professionally.
             </p>
         </div>
-    </div>
-</section>
 
-<!-- Custom Design Solutions Section -->
-<section class="custom-design-section">
-    <div class="custom-design-container">
-        <div class="custom-design-content">
-            <!-- Image Side -->
-            <div class="custom-design-image">
-                <div class="product-showcase">
-
-                    <img src="{{ url('assets/images/6.png') }}" width="300px" alt="Hoodie Mockup">
-
+        <div class="create-grid">
+            <div class="create-card">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
+                    </svg>
                 </div>
+                <h3>Premium Branded T-shirts</h3>
+                <p>High-quality fabrics with vibrant, long-lasting prints.</p>
             </div>
 
-            <!-- Content Side -->
-            <div class="custom-design-text">
-                <h3 class="section-title">Custom Or Ready-Made — Your Choice</h3>
-                <p class="section-description">
-                    If it matters to you, we can put it on a shirt.
-                    Have your own design or logo? Send it to us and we’ll bring it to life with
-                    high-quality printing and care. Don’t have a design yet? Shop our ready-made
-                    collections created for seasons, celebrations, and everyday encouragement.
-                    Either way, you get something that feels like you.
-                </p>
-
-                <div class="features-list">
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                        </div>
-                        <span class="feature-text">Use Your Own Design/Logo</span>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                        </div>
-                        <span class="feature-text">Thoughtfully Curated Collections</span>
-                    </div>
+            <div class="create-card">
+                <div class="card-icon">
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
+                    </svg>
+                   
                 </div>
+                <h3>Premium Branded Sweatshirts</h3>
+                <p>Cozy, structured fit that maintains its shape wash after wash.</p>
+            </div>
 
-                <a href="{{ route('marketplace') }}" class="cta-button">Shop Or Send Us Your Design</a>
+            <div class="create-card">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <h3>Team Apparel for Businesses</h3>
+                <p>Unified looks for your team at the office or on the field.</p>
+            </div>
+
+            <div class="create-card">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14M16.5 9.4L7.5 4.21M3.29 7L12 12l8.71-5M12 22.08V12" />
+                    </svg>
+                </div>
+                <h3>Vendor Events & Trade Shows</h3>
+                <p>Stand out in the crowd with professional event apparel.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Brand Experiences Section -->
-<section class="brand-experiences-section">
-    <div class="brand-experiences-container">
-        <div class="brand-experiences-content">
-            <!-- Content Side -->
-            <div class="brand-experiences-text">
-                <h3 class="section-title">Why Our Customers Love Us?</h3>
-                <p class="section-description">
-                    We don’t just print shirts. We help people celebrate life.
-                    From birthdays to milestones and everyday motivation,
-                    every order is handled with care, meaning, and attention to detail.
-                </p>
-
-                <div class="features-list">
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                        </div>
-                        <span class="feature-text">Thoughtful Designs With Meaning</span>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                        </div>
-                        <span class="feature-text">Apparel Made For Real-Life Moments</span>
-                    </div>
-                </div>
-
-                <a href="{{ route('marketplace') }}" class="cta-button">Explore Our Apparel</a>
-            </div>
-
-            <!-- Image Side -->
-            <div class="brand-experiences-image">
-                <div class="tote-showcase">
-                    <div class="tote-mockup">
-                        <img src="{{ url('assets/images/1.png') }}" width="300px" alt="Hoodie Mockup">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Collaborate Section -->
-<section class="collaborate-section">
-    <div class="collaborate-container">
-        <div class="collaborate-content">
+<!-- The Founder’s Bundle Section -->
+<section class="bundle-section">
+    <div class="bundle-container">
+        <div class="bundle-content">
             <!-- Visual Side -->
-            <div class="collaborate-visual">
-
-                <img src="{{ url('assets/images/5.png') }}" width="300px" alt="Hoodie Mockup">
-                <!-- Background Pattern -->
-
-
+            <div class="bundle-visual">
+                <div class="visual-wrapper">
+                    <img src="{{ url('assets/images/thrive/thrive7.png') }}" alt="Founder's Bundle">
+                    <div class="bundle-badge">Signature Package</div>
+                </div>
             </div>
 
             <!-- Content Side -->
-            <div class="collaborate-text">
-                <h3 class="section-title">Ready To Create Something Meaningful?</h3>
-                <p class="section-description">
-                    Whether you’re marking a milestone, planning an event, or creating everyday pieces that inspire,
-                    we’re here to help you make it memorable with apparel that feels personal and intentional.
+            <div class="bundle-text">
+                <h3 class="bundle-title">The Founder’s Bundle</h3>
+                <p class="bundle-description">
+                    A curated apparel package designed for business owners who want a simple way to represent their brand consistently.
                 </p>
 
-                <div class="features-list">
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 20 20" fill="currentColor">
+                <div class="bundle-features">
+                    <div class="bundle-feature">
+                        <div class="check-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                         </div>
-                        <span class="feature-text">Personalized Service</span>
+                        <span>Premium branded t-shirt & sweatshirt</span>
                     </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 20 20" fill="currentColor">
+                    <div class="bundle-feature">
+                        <div class="check-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                         </div>
-                        <span class="feature-text">Apparel Made For Real Life</span>
+                        <span>Vibrant, high-quality print</span>
+                    </div>
+                    <div class="bundle-feature">
+                        <div class="check-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span>Durable neckline & structured fit</span>
                     </div>
                 </div>
 
-                <a href="{{ route('marketplace') }}" class="cta-button">Shop Collections</a>
+                <a href="{{ route('marketplace') }}" class="btn-primary white-bg">Order Your Bundle</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Why Choose Us Section -->
+<!-- Where Founders Use Their Apparel -->
+<section class="visibility-section">
+    <div class="visibility-container">
+        <div class="visibility-content">
+            <!-- Content Side -->
+            <div class="visibility-text">
+                <div class="label-pill">VISIBILITY MATTERS</div>
+                <h3 class="visibility-title">Show Up with Confidence</h3>
+                <p class="visibility-description">
+                    Our clients wear their branded apparel in places where visibility matters. Branded apparel makes your business visible even when you are not actively selling.
+                </p>
+
+                <div class="visibility-grid">
+                    <div class="visibility-item">
+                        <span class="item-number">01</span>
+                        <p>Vendor & Networking Events</p>
+                    </div>
+                    <div class="visibility-item">
+                        <span class="item-number">02</span>
+                        <p>Trade Shows & Pop-up Markets</p>
+                    </div>
+                    <div class="visibility-item">
+                        <span class="item-number">03</span>
+                        <p>Client Meetings & Speaking Engagements</p>
+                    </div>
+                    <div class="visibility-item">
+                        <span class="item-number">04</span>
+                        <p>Content Creation & Brand Photos</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Side -->
+            <div class="visibility-visual">
+                <div class="visual-container">
+                    <img src="{{ url('assets/images/thrive/thrive3.png') }}" alt="Visibility">
+                    <div class="visual-glow"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Who We Work With -->
 <section class="why-choose-us-section">
     <div class="why-choose-us-container">
         <div class="why-choose-us-content">
-            <!-- Left Content -->
             <div class="why-choose-us-text">
-                <span class="section-label">WHY CHOOSE US</span>
-                <h2 class="why-choose-us-title">Discover WhyThriveCity StudioExcels</h2>
+                <h2 class="why-choose-us-title">Who We Work With</h2>
                 <p class="why-choose-us-description">
-                    We create thoughtful merchandise designs
-                    that build genuine connections between
-                    brands and their audiences, delivering
-                    exceptional quality and memorable
-                    experiences.
+                    Thrive City Studio works with founders and businesses that are building something meaningful. If you want to present your brand professionally, we create apparel designed for you.
                 </p>
-                <a href="/contact-us" class="message-us-button">Message Us</a>
             </div>
 
-            <!-- Right Features Grid -->
             <div class="features-grid">
-                <!-- Creative Excellence -->
                 <div class="feature-box">
-                    <div class="feature-icon-container">
-                        <div class="feature-icon creative-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="3"></circle>
-                                <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <h3 class="feature-title">Creative Excellence</h3>
-                    <p class="feature-description">Award-winning designers creating innovative merchandise solutions.</p>
+                    <h3 class="feature-title">Consultants & Coaches</h3>
                 </div>
-
-                <!-- Brand Partnership -->
                 <div class="feature-box">
-                    <div class="feature-icon-container">
-                        <div class="feature-icon partnership-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <h3 class="feature-title">Brand Partnership</h3>
-                    <p class="feature-description">Dedicated collaboration to understand and amplify your brand identity.</p>
+                    <h3 class="feature-title">Service-Based Businesses</h3>
                 </div>
-
-                <!-- Premium Quality -->
                 <div class="feature-box">
-                    <div class="feature-icon-container">
-                        <div class="feature-icon quality-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 12l2 2 4-4"></path>
-                                <path d="M21 12c.552 0 1-.448 1-1V8a2 2 0 0 0-2-2h-5L9.414 0H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-8z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <h3 class="feature-title">Premium Quality</h3>
-                    <p class="feature-description">High-quality materials and craftsmanship in every product we create.</p>
+                    <h3 class="feature-title">Creative Entrepreneurs</h3>
                 </div>
-
-                <!-- Fast Delivery -->
                 <div class="feature-box">
-                    <div class="feature-icon-container">
-                        <div class="feature-icon delivery-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"></polygon>
-                            </svg>
-                        </div>
-                    </div>
-                    <h3 class="feature-title">Fast Delivery</h3>
-                    <p class="feature-description">Quick turnaround times without compromising on design quality.</p>
+                    <h3 class="feature-title">Startups & Teams</h3>
                 </div>
             </div>
         </div>
     </div>
-</section>
-
-<!-- Testimonials Section -->
-<section class="testimonials-section">
-    <div class="testimonials-container">
-        <div class="testimonials-content">
-            <div class="testimonials-header">
-                <span class="section-label">TESTIMONIALS</span>
-                <h2 class="testimonials-title">What Our Clients Say</h2>
-                <p class="testimonials-subtitle">Hear from brands who've transformed their merchandise with ThriveCity Studio</p>
-            </div>
-
-            <div class="testimonials-carousel">
-                <div class="carousel-wrapper">
-                    <div class="testimonials-track" id="testimonialsTrack">
-                        <!-- Testimonial 1 -->
-                        <div class="testimonial-card active">
-                            <div class="testimonial-content">
-                                <div class="quote-icon">
-                                    <svg viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
-                                    </svg>
-                                </div>
-                                <p class="testimonial-text">
-                                    "ThriveCity Studio completely transformed our brand merchandise. Their attention to detail and creative approach resulted in products our customers absolutely love."
-                                </p>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar">
-                                        <div class="avatar-placeholder">SM</div>
-                                    </div>
-                                    <div class="author-info">
-                                        <h4 class="author-name">Victor Michelle</h4>
-                                        <p class="author-title">Marketing Director, VTUBIZ</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Testimonial 2 -->
-                        <div class="testimonial-card">
-                            <div class="testimonial-content">
-                                <div class="quote-icon">
-                                    <svg viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
-                                    </svg>
-                                </div>
-                                <p class="testimonial-text">
-                                    "The quality and creativity exceeded our expectations. Our branded merchandise has become a powerful tool for customer engagement and brand recognition."
-                                </p>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar">
-                                        <div class="avatar-placeholder">AA</div>
-                                    </div>
-                                    <div class="author-info">
-                                        <h4 class="author-name">Awe Alexander</h4>
-                                        <p class="author-title">Brand Manager, CTTaste.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Testimonial 3 -->
-                        <div class="testimonial-card">
-                            <div class="testimonial-content">
-                                <div class="quote-icon">
-                                    <svg viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
-                                    </svg>
-                                </div>
-                                <p class="testimonial-text">
-                                    "Working with ThriveCity Studio was seamless. They understood our vision perfectly and delivered merchandise that truly represents our brand values."
-                                </p>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar">
-                                        <div class="avatar-placeholder">FP</div>
-                                    </div>
-                                    <div class="author-info">
-                                        <h4 class="author-name">Fasanya Pelumi</h4>
-                                        <p class="author-title">Brand Manager, CTHostel</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Carousel Navigation -->
-                <div class="carousel-navigation">
-                    <button class="carousel-btn prev-btn" onclick="changeTestimonial(-1)">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-                        </svg>
-                    </button>
-                    <div class="carousel-dots">
-                        <span class="dot active" onclick="currentTestimonial(1)"></span>
-                        <span class="dot" onclick="currentTestimonial(2)"></span>
-                        <span class="dot" onclick="currentTestimonial(3)"></span>
-                    </div>
-                    <button class="carousel-btn next-btn" onclick="changeTestimonial(1)">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
 </section>
 
 <!-- FAQ Section -->
 <section class="faq-section">
     <div class="faq-container">
         <div class="faq-header">
-            <span class="section-label">MERCH FAQS</span>
-            <h2 class="faq-title">FrequentlyAsked Questions</h2>
+            <div class="label-pill">MERCH FAQS</div>
+            <h2 class="faq-title">Frequently Asked Questions</h2>
             <p class="faq-subtitle">
-                Explore our FAQs to learn how ThriveCity
-                Studio creates high-impact merchandise that
-                builds brand love and loyalty with your
-                audience.
+                Learn how Thrive City Studio creates high-impact merchandise that builds brand visibility and professional presence.
             </p>
         </div>
 
@@ -514,64 +347,142 @@
             <!-- FAQ Item 1 -->
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>How can I contact ThriveCity Studio for merch inquiries?</span>
-                    <div class="faq-icon">
-
-                    </div>
-                </div>
-                <div class="faq-answer">
-                    <p>You can contact us through our website contact form, email us directly at support@thrivecitystudio.ca, or call us at +1 (437) 239-6950. We typically respond to all inquiries within 24 hours during business days.</p>
-                </div>
-            </div>
-
-            <!-- FAQ Item 2 -->
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>What types of merchandise can ThriveCity Studio create?</span>
-                    <div class="faq-icon">
-
-                    </div>
-                </div>
-                <div class="faq-answer">
-                    <p>We specialize in a wide range of merchandise including apparel (t-shirts, hoodies, hats), promotional items (mugs, pens, bags), tech accessories, and custom branded products. Our team can work with virtually any product type to bring your brand vision to life.</p>
-                </div>
-            </div>
-
-            <!-- FAQ Item 3 -->
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Can you provide mockups or samples before production?</span>
-                    <div class="faq-icon">
-
-                    </div>
-                </div>
-                <div class="faq-answer">
-                    <p>Absolutely! We provide detailed digital mockups for all projects before production begins. For larger orders, we can also create physical samples upon request. This ensures you're completely satisfied with the design and quality before we proceed with full production.</p>
-                </div>
-            </div>
-
-            <!-- FAQ Item 4 -->
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
                     <span>How long does it take to produce and deliver merchandise?</span>
                     <div class="faq-icon">
-
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14" />
+                        </svg>
                     </div>
                 </div>
                 <div class="faq-answer">
                     <p>Production times vary depending on the complexity and quantity of your order. Typically, simple designs take 5-7 business days, while more complex projects may take 10-14 business days. Rush orders are available for an additional fee, with some items available in as little as 2-3 business days.</p>
                 </div>
             </div>
-            <!-- FAQ Item 5 -->
+
+            <!-- FAQ Item 2 -->
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
                     <span>What is the minimum order quantity for custom merchandise?</span>
                     <div class="faq-icon">
-
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14" />
+                        </svg>
                     </div>
                 </div>
                 <div class="faq-answer">
                     <p>Our minimum order quantities vary by product type. For most apparel items, we require a minimum of 12 pieces per design. For promotional items like mugs or pens, minimums typically start at 25-50 pieces. We're happy to discuss your specific needs and find solutions that work for your budget.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I use my own design or logo?</span>
+                    <div class="faq-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! We specialize in bringing your brand to life. Simply upload your high-resolution logo or design, and we'll ensure it's printed with professional quality.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What is included in the Founder's Bundle?</span>
+                    <div class="faq-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <p>The Founder's Bundle includes a curated selection of our most popular premium apparel: 1 high-quality t-shirt and 1 structured sweatshirt, both branded with your logo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<!-- Why Choose Us Section -->
+<section class="benefits-section">
+    <div class="benefits-container">
+        <div class="benefits-header">
+            <div class="label-pill">WHY BUSINESSES CHOOSE US</div>
+            <h2 class="benefits-title">Designed Specifically for Entrepreneurs</h2>
+        </div>
+
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
+                    </svg>
+                </div>
+                <h3>Quality Apparel</h3>
+                <p>Structured garments designed to maintain their shape and professional appearance over time.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="21 8 21 21 3 21 3 8"></polyline>
+                        <rect x="1" y="3" width="22" height="5"></rect>
+                        <line x1="10" y1="12" x2="14" y2="12"></line>
+                    </svg>
+                </div>
+                <h3>Vibrant Printing</h3>
+                <p>Clean, professional prints that represent your brand clearly and withstand repeated washes.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <h3>Built for Founders</h3>
+                <p>Specifically designed for entrepreneurs who represent their brands in public spaces and events.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission & Final CTA -->
+<section class="mission-section">
+    <div class="mission-container">
+        <div class="mission-content-wrapper">
+            <div class="mission-text-side">
+                <div class="label-pill white" style="color:white">OUR MISSION</div>
+                <h2 class="mission-title">Help growing businesses show up with confidence.</h2>
+                <p class="mission-description">
+                    Many entrepreneurs are doing excellent work but struggle to present their brands in a way that reflects the level of value they provide. 
+                    We believe your brand should look as strong as the work you do.
+                </p>
+                <div class="mission-quote">
+                    "That is why we create apparel that helps founders look established while they build."
+                </div>
+            </div>
+
+            <div class="mission-cta-card">
+                <div class="cta-card-inner">
+                    <h3 class="cta-card-title">Your brand deserves to be seen.</h3>
+                    <p class="cta-card-text">Represent it with apparel designed for entrepreneurs.</p>
+                    <a href="{{ route('marketplace') }}" class="btn-primary full-width">
+                        <span>Order Branded Apparel Today</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16663 10H15.8333M15.8333 10L10.8333 5M15.8333 10L10.8333 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="cta-card-footer">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        Professional Quality Guaranteed
+                    </div>
                 </div>
             </div>
         </div>

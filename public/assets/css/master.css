@@ -33,7 +33,7 @@ body {
     font-family: "Montserrat", sans-serif;
     background-color: var(--white);
     color: var(--dark-black);
-    line-height: 1.6;
+    /* line-height: 1.6; */
 }
 
 /* ===== HEADER STYLES ===== */

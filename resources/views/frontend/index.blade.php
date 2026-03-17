@@ -1,77 +1,86 @@
 @extends('frontend.master')
 
 @section('header')
-<link rel="stylesheet" href="{{ url('assets/css/index2.css') }}">
+<link rel="stylesheet" href="{{ url('assets/css/index.css') }}">
 
 @endsection
 
 @section('content')
 <section class="hero">
+    <!-- Background Elements -->
+    <div class="hero-bg-glow"></div>
+    <div class="hero-grid-pattern"></div>
+
     <div class="hero-container">
-        <div class="hero-grid">
+        <div class="hero-layout">
             <!-- Hero Content -->
-            <div class="hero-content animate-fade-up">
-                <div class="hero-badge">
-                    <span class="badge-dot"></span>
-                    Trusted by 500+ Growing Businesses
-                </div>
+            <div class="hero-content-side animate-fade-up">
+                <!-- <div class="hero-tag-badge">
+                    <span class="pulse-icon"></span>
+                    <span>Trusted by 500+ Growing Businesses</span>
+                </div> -->
 
-                <!-- Main Heading -->
-                <h1 class="hero-heading">
-                    Professional <span class="text-gradient">Branded Apparel</span> for Founders.
+                <h1 class="hero-main-title">
+                    Professional <span class="highlight-text">Branded Apparel</span> for founders
                 </h1>
-                <h2 class="hero-subheading">We help entrepreneurs and teams show up looking established through high-quality branded apparel.</h2>
 
-                <!-- Description -->
-                <p class="hero-description">
-                    From premium branded t-shirts and sweatshirts to apparel designed for events, teams, and brand visibility, Thrive City Studio helps your business show up with confidence.
+                <p class="hero-lead-text">
+                    We help entrepreneurs and growing teams look established through high-quality branded apparel. From custom t-shirts to professional bundles, we handle the production so you can focus on building.
                 </p>
 
-                <!-- CTA Buttons -->
-                <div class="cta-buttons">
-                    <a href="{{ route('marketplace') }}" class="btn-primary">
-                        <span> Branded Apparel</span>
+                <div class="hero-cta-group">
+                    <a href="{{ route('marketplace') }}" class="btn-hero-primary">
+                        <span>Get Branded Apparel</span>
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M4.16663 10H15.8333M15.8333 10L10.8333 5M15.8333 10L10.8333 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </a>
-                    <a href="{{ route('marketplace') }}" class="btn-secondary"> Founder’s Bundle</a>
+                    <a href="{{ route('marketplace') }}" class="btn-hero-outline">
+                        <span>View Founder's Bundle</span>
+                    </a>
                 </div>
+
+
             </div>
 
             <!-- Hero Visual -->
-            <div class="hero-visual animate-fade-in">
-                <div class="visual-wrapper">
-                    <div class="visual-container">
-                        <!-- Background Glows -->
-                        <div class="glow glow-1"></div>
-                        <div class="glow glow-2"></div>
-
-                        <!-- Product Mockups -->
-                        <div class="product-mockups">
-                            <img src="{{ url('assets/images/thrive/thrive4.png') }}" alt="Product Mockup" class="hero-image">
-                        </div>
-
-                        <!-- Floating Stat Card -->
-                        <div class="stat-card floating-y">
-                            <div class="stat-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                </svg>
-                            </div>
-                            <div class="stat-info">
-                                <span class="stat-value">Premium Quality</span>
-                                <span class="stat-label">Verified Apparel</span>
-                            </div>
-                        </div>
-
-                        <!-- Experience Card -->
-                        <!-- <div class="exp-card floating-y-delayed">
-                            <div class="exp-stars">★★★★★</div>
-                            <div class="exp-text">"Best for our team events!"</div>
-                        </div> -->
+            <div class="hero-visual-side">
+                <div class="visual-composition animate-fade-in">
+                    <!-- Main Image Frame -->
+                    <div class="main-image-wrapper">
+                        <div class="image-inner-glow"></div>
+                        <img src="{{ url('assets/images/thrive/thrive4.png') }}" alt="Thrive City Apparel" class="main-hero-img">
                     </div>
+
+                    <!-- Floating Feature Cards -->
+                    <!-- <div class="floating-info-card info-card-1 floating-y">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <span class="info-label">Premium Fabric</span>
+                            <span class="info-value">100% Cotton</span>
+                        </div>
+                    </div> -->
+
+                    <!-- <div class="floating-info-card info-card-2 floating-y-delayed">
+                        <div class="info-icon icon-purple">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <span class="info-label">Verified Quality</span>
+                            <span class="info-value">Hand-Inspected</span>
+                        </div>
+                    </div> -->
+
+                    <!-- Decorative elements -->
+                    <div class="decorative-blob"></div>
+                    <div class="decorative-ring"></div>
                 </div>
             </div>
         </div>
@@ -84,10 +93,32 @@
         <div class="established-content">
             <!-- Image Side -->
             <div class="established-visual">
-                <div class="visual-frame">
-                    <img src="{{ url('assets/images/thrive/thrive6.png') }}" alt="Founder Apparel">
-                    <div class="floating-badge top-right">Professional Grade</div>
-                    <div class="floating-tag bottom-left">Founder's Choice</div>
+                <div class="established-composition">
+                    <div class="composition-glow"></div>
+                    <div class="composition-shape-1"></div>
+                    <div class="composition-shape-2"></div>
+
+                    <div class="composition-card main-card">
+                        <img src="{{ url('assets/images/thrive/thrive6.png') }}" alt="Founder wearing branded apparel">
+                    </div>
+
+                    <div class="composition-card accent-card">
+                        <img src="{{ url('assets/images/thrive/thrive2.png') }}" alt="Close-up of apparel fabric">
+                    </div>
+
+                    <!-- <div class="composition-tag tag-pro">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Professional Grade</span>
+                    </div> -->
+
+                    <!-- <div class="composition-tag tag-choice">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <span>Founder's Choice</span>
+                    </div> -->
                 </div>
             </div>
 
@@ -173,10 +204,10 @@
 
             <div class="create-card">
                 <div class="card-icon">
-                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
                     </svg>
-                   
+
                 </div>
                 <h3>Premium Branded Sweatshirts</h3>
                 <p>Cozy, structured fit that maintains its shape wash after wash.</p>
@@ -214,9 +245,11 @@
         <div class="bundle-content">
             <!-- Visual Side -->
             <div class="bundle-visual">
-                <div class="visual-wrapper">
-                    <img src="{{ url('assets/images/thrive/thrive7.png') }}" alt="Founder's Bundle">
-                    <div class="bundle-badge">Signature Package</div>
+                <div class="bundle-showcase">
+                    <img src="{{ url('assets/images/thrive/thrive4.png') }}" alt="Branded Sweatshirt" class="showcase-image image-back">
+                    <img src="{{ url('assets/images/thrive/thrive7.png') }}" alt="Branded T-shirt" class="showcase-image image-front">
+                    <!-- <div class="bundle-badge">Signature Package</div> -->
+                    <div class="showcase-glow"></div>
                 </div>
             </div>
 
@@ -254,7 +287,7 @@
                     </div>
                 </div>
 
-                <a href="{{ route('marketplace') }}" class="btn-primary white-bg">Order Your Bundle</a>
+                <a href="{{ route('marketplace') }}" class="btn-bundle-order">Order Your Bundle</a>
             </div>
         </div>
     </div>
@@ -294,9 +327,9 @@
 
             <!-- Image Side -->
             <div class="visibility-visual">
-                <div class="visual-container">
-                    <img src="{{ url('assets/images/thrive/thrive3.png') }}" alt="Visibility">
-                    <div class="visual-glow"></div>
+                <div class="visibility-image-wrapper">
+                    <img src="{{ url('assets/images/thrive/thrive3.png') }}" alt="Founder showing brand confidence">
+                    <div class="image-bg-glow"></div>
                 </div>
             </div>
         </div>
@@ -463,7 +496,7 @@
                 <div class="label-pill white" style="color:white">OUR MISSION</div>
                 <h2 class="mission-title">Help growing businesses show up with confidence.</h2>
                 <p class="mission-description">
-                    Many entrepreneurs are doing excellent work but struggle to present their brands in a way that reflects the level of value they provide. 
+                    Many entrepreneurs are doing excellent work but struggle to present their brands in a way that reflects the level of value they provide.
                     We believe your brand should look as strong as the work you do.
                 </p>
                 <div class="mission-quote">
@@ -477,10 +510,14 @@
                     <p class="cta-card-text">Represent it with apparel designed for entrepreneurs.</p>
                     <a href="{{ route('marketplace') }}" class="btn-primary full-width">
                         <span>Order Branded Apparel Today</span>
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16663 10H15.8333M15.8333 10L10.8333 5M15.8333 10L10.8333 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4.16663 10H15.8333M15.8333 10L10.8333 5M15.8333 10L10.8333 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
                     </a>
                     <div class="cta-card-footer">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
                         Professional Quality Guaranteed
                     </div>
                 </div>

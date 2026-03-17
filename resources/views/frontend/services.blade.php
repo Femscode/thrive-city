@@ -1,8 +1,8 @@
 @extends('frontend.master')
 
 @section('header')
-<link rel="stylesheet" href="{{ url('assets/css/index2.css') }}">
-<link rel="stylesheet" href="{{ url('assets/css/about2.css') }}">
+<link rel="stylesheet" href="{{ url('assets/css/index.css') }}">
+<link rel="stylesheet" href="{{ url('assets/css/about.css') }}">
 <style>
     .services-intro {
         max-width: 800px;

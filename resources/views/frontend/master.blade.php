@@ -15,7 +15,7 @@
     <!-- Fav Icon -->
     <link rel="icon" href="{{ url('assets/images/fav.png') }}" type="image/x-icon">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ url('assets/css/master.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/css/master3.css') }}">
     @yield('header')
 </head>
 

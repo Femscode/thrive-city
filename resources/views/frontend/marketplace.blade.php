@@ -160,6 +160,7 @@
                             <option value="Adult L">Adult L</option>
                             <option value="Adult XL">Adult XL</option>
                             <option value="Adult 2XL">Adult 2XL</option>
+                            <option value="Adult 3XL">Adult 3XL</option>
                         </select>
                     </div>
                     <div class="form-group" id="group-select-placement">

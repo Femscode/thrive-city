@@ -148,13 +148,13 @@
                         <label for="apparel-size">Size</label>
                         <select id="apparel-size" name="size">
                             <option value="">Select size</option>
-                            <option value="Toddler 2-3yrs">Toddler 2-3yrs</option>
+                            <!-- <option value="Toddler 2-3yrs">Toddler 2-3yrs</option>
                             <option value="Toddler 4-5yrs">Toddler 4-5yrs</option>
                             <option value="Youth 6-7yrs">Youth 6-7yrs</option>
                             <option value="Youth 8-9yrs">Youth 8-9yrs</option>
                             <option value="Youth 10-11yrs">Youth 10-11yrs</option>
                             <option value="Youth 12-13yrs">Youth 12-13yrs</option>
-                            <option value="Youth 14-15yrs">Youth 14-15yrs</option>
+                            <option value="Youth 14-15yrs">Youth 14-15yrs</option> -->
                             <option value="Adult S">Adult S</option>
                             <option value="Adult M">Adult M</option>
                             <option value="Adult L">Adult L</option>
@@ -166,11 +166,11 @@
                         <label for="apparel-placements">Design Placement</label>
                         <select id="apparel-placements" name="placements[]" multiple>
                             <option value="front_center">Front center</option>
-                            <option value="front_left">Front left</option>
-                            <option value="front_right">Front right</option>
+                            <option value="front_left">Left Pocket</option>
+                            <!-- <option value="front_right">Front right</option> -->
                             <option value="back">Back placement</option>
-                            <option value="right_sleeve">Right sleeve</option>
-                            <option value="left_sleeve">Left sleeve</option>
+                            <!-- <option value="right_sleeve">Right sleeve</option> -->
+                            <!-- <option value="left_sleeve">Left sleeve</option> -->
                         </select>
                         <small class="help-text">Hold Ctrl/Cmd to select multiple</small>
                     </div>
